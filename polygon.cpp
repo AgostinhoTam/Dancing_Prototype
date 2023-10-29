@@ -42,7 +42,7 @@ static DX11_MODEL					g_Model;			// ƒ‚ƒfƒ‹“Ç‚İ‚İ
 
 static int jumpCnt = 0;
 static bool jumpFlag = false;
-
+int a;
 
 
 
