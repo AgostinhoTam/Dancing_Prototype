@@ -3,13 +3,15 @@
 
    オブジェクト管理[obj.h]
 														 Author :林祐也
-														 Date   :2023/09/05
+														 Date   :2023/10/29
 --------------------------------------------------------------------------------
 
 ==============================================================================*/
 
 #include "renderer.h"
 #include "main.h"
+#include "model.h"
+
 //==================================
 //マクロ定義
 //==================================
@@ -43,17 +45,18 @@ private:
 	D3DXVECTOR3  playerVel = { 0.0f,0.0f,0.0f };		//プレイヤーの速度
 	D3DXVECTOR3  playerOldpos = { 0.0f,0.0f,0.0f };		//プレイヤーの過去座標
 	D3DXVECTOR3  playerRot = { 0.0f,0.0f,0.0f };		//プレイヤーの回転
+	D3DXVECTOR3  playerScl = { 0.0f,0.0f,0.0f };		//プレイヤーのスケール
 	D3DXVECTOR3  enemyPos = { 0.0f,0.0f,0.0f };			//エネミーの場所
 	D3DXVECTOR3  enemySize = { 0.0f,0.0f,0.0f };		//エネミーの大きさ
 	D3DXVECTOR3  enemyVel = { 0.0f,0.0f,0.0f };			//エネミーの速度
 	D3DXVECTOR3  enemyOldpos = { 0.0f,0.0f,0.0f };		//エネミーの過去座標
 	D3DXVECTOR3  enemyRot = { 0.0f,0.0f,0.0f };			//エネミーの回転
-
+	D3DXVECTOR3  enemyScl = { 0.0f,0.0f,0.0f };		//プレイヤーのスケール
 
 	//-----------------------------------
 	//アニメーション用/画像
 	//-----------------------------------
-	int texture = 0;					//画像格納用
+	int texture = 0;				//画像格納用
 	float U = 1.0f;					//画像の場所指定用X
 	float V = 1.0f;					//画像の場所指定用Y
 	float UW = 1.0f;				//画像のサイズX
@@ -77,6 +80,9 @@ private:
 	//------------------------
 	int bgm = 0;		//BGM用
 	int se = 0;			//SE用
+
+protected:
+	DX11_MODEL model;				//3Dモデル格納用
 
 public:
 
@@ -217,6 +223,18 @@ public:
 	void SetPlayerRotZ(float sPlayerRot) {
 		playerRot.z = sPlayerRot;
 	}//Z回転のプレイヤーのセット
+	void SetPlayerScl(D3DXVECTOR3 sPlayerScl) {
+		playerScl = sPlayerScl;
+	}//スケールのセット
+	void SetPlayerSclX(float sPlayerScl) {
+		playerScl.x = sPlayerScl;
+	}//X回転のセット
+	void SetPlayerSclY(float sPlayerScl) {
+		playerScl.y = sPlayerScl;
+	}//Y回転のセット
+	void SetPlayerSclZ(float sPlayerScl) {
+		playerScl.z = sPlayerScl;
+	}//Z回転のセット
 
 	void SetEnemyPos(D3DXVECTOR3 sPos) {
 		enemyPos = sPos;
@@ -278,10 +296,26 @@ public:
 	void SetEnemyRotZ(float sEnemyRot) {
 		enemyRot.z = sEnemyRot;
 	}//Z回転のプレイヤーのセット
+	void SetEnemyScl(D3DXVECTOR3 sEnemyScl) {
+		enemyScl = sEnemyScl;
+	}//スケールのセット
+	void SetEnemySclX(float sEnemyScl) {
+		enemyScl.x = sEnemyScl;
+	}//Xスケールのセット
+	void SetEnemySclY(float sEnemyScl) {
+		enemyScl.y = sEnemyScl;
+	}//Yスケールのセット
+	void SetEnemySclZ(float sEnemyScl) {
+		enemyScl.z = sEnemyScl;
+	}//Zスケールのセット
 
 	//-----------------------------------
 	//アニメーション用/画像
 	//-----------------------------------
+
+	//void SetModel(DX11_MODEL sModel) {
+	//	model = sModel;
+	//}//モデルのセット
 	void SetTexture(int sTex) {
 		texture = sTex;
 	}//テクスチャのセット
@@ -455,6 +489,30 @@ public:
 	float GetPlayerOldposZ() const {
 		return playerOldpos.z;
 	}//Zプレイヤー過去座標の取得
+	D3DXVECTOR3 GetPlayerRot() const {
+		return playerRot;
+	}//X,Y,Zプレイヤー回転値の取得
+	float GetPlayerRotX() const {
+		return playerRot.x;
+	}//Xプレイヤー回転値の取得
+	float GetPlayerRotY() const {
+		return playerRot.y;
+	}//Yプレイヤー回転値の取得
+	float GetPlayerRotZ() const {
+		return playerRot.z;
+	}//Zプレイヤー回転値の取得
+	D3DXVECTOR3 GetPlayerScl() const {
+		return playerScl;
+	}//X,Y,Zスケールの取得
+	float GetPlayerSclX() const {
+		return playerScl.x;
+	}//Xスケールの取得
+	float GetPlayerSclY() const {
+		return playerScl.y;
+	}//Yスケールの取得
+	float GetPlayerSclZ() const {
+		return playerScl.z;
+	}//Zスケールの取得
 
 	D3DXVECTOR3 GetEnemyPos() const {
 		return enemyPos;
@@ -504,10 +562,26 @@ public:
 	float GetEnemyOldposZ() const {
 		return enemyOldpos.z;
 	}//Zエネミー過去座標の取得
+	D3DXVECTOR3 GetEnemyScl() const {
+		return enemyScl;
+	}//X,Y,Zスケールの取得
+	float GetEnemySclX() const {
+		return enemyScl.x;
+	}//Xスケールの取得
+	float GetEnemySclY() const {
+		return enemyScl.y;
+	}//Yスケールの取得
+	float GetEnemySclZ() const {
+		return enemyScl.z;
+	}//Zスケールの取得
 
 	//-----------------------------------
 	//アニメーション用/画像
 	//-----------------------------------
+
+	//DX11_MODEL GetModel()const {
+	//	return model;
+	//}//モデルの取得
 	int GetTexture() const {
 		return texture;
 	}//テクスチャの取得

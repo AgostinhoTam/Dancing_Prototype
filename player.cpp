@@ -6,7 +6,8 @@
 #include "player.h"
 #include "input.h"
 //#include "camera.h"
-
+#define PERFECT_FAITH (2.0f)			//M‹Â’l’²®—p
+#define NORMAL_FAITL (1.0f)
 Player::Player()
 {
 
