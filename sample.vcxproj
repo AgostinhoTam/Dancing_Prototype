@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="obj.h" />
     <ClInclude Include="planePolygon.h" />
     <ClInclude Include="camera.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="titleBG.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="planePolygon.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="game.cpp" />
