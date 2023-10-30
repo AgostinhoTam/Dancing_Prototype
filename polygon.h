@@ -1,25 +1,17 @@
 //=============================================================================
 //
 // 地面処理 [polygon.h]
-// Author : 
-//
+//Date:2023/10/29	Auther:林祐也
 //=============================================================================
 #pragma once
 
 #include <d3dx9.h>
 #include "renderer.h"
-
+#include "model.h"
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-struct POLYGON
-{
-	D3DXVECTOR3		pos;		// ポリゴンの位置
-	D3DXVECTOR3		rot;		// ポリゴンの向き(回転)
-	D3DXVECTOR3		scl;		// ポリゴンの大きさ(スケール)
 
-	D3DXMATRIX		mtxWorld;	// ワールドマトリックス
-};
 
 //*****************************************************************************
 // プロトタイプ宣言
@@ -27,5 +19,6 @@ struct POLYGON
 HRESULT InitPolygon(void);
 void UninitPolygon(void);
 void UpdatePolygon(void);
-void DrawPolygon(void);
+void DrawPolygon(DX11_MODEL Model, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld);
+void DrawPlayerPolygon(DX11_MODEL Model, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld);
 

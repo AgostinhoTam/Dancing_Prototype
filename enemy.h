@@ -24,6 +24,7 @@ private:
 	float	m_hp = 0;
 public:
 	Enemy();
+	//Enemy(DX11_MODEL addmodel) :model(addmodel){}
 	~Enemy();
 	void Update(void)override;
 	void Draw(void)override;
