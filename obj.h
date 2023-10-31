@@ -579,9 +579,9 @@ public:
 	//アニメーション用/画像
 	//-----------------------------------
 
-	//DX11_MODEL GetModel()const {
-	//	return model;
-	//}//モデルの取得
+	DX11_MODEL GetModel()const {
+		return model;
+	}//モデルの取得
 	int GetTexture() const {
 		return texture;
 	}//テクスチャの取得

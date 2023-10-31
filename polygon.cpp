@@ -8,6 +8,8 @@
 #include "polygon.h"
 #include "texture.h"
 #include "model.h"
+#include "player.h"
+#include "enemy.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -28,6 +30,7 @@ static ID3D11Buffer* g_VertexBuffer = NULL;	// 頂点情報
 //=============================================================================
 HRESULT InitPolygon(void)
 {
+
 	//objモデルの読み込み
 	//LoadModel((char*)"data/MODEL/miku_01.obj", &g_Model);
 
