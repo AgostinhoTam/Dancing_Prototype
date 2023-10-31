@@ -1,25 +1,21 @@
 //===============================================
-//ƒQ[ƒ€§Œä[map.h]
-//Date:2023/10/27	Auther:—Ñ—S–ç
+//áŠQ•¨§Œä[obstacle.h]
+//Date:2023/10/30	Auther:—Ñ—S–ç
 //===============================================
 #pragma once
+
 
 #include "obj.h"
 #include "renderer.h"
 
-//==================================
-//ƒ}ƒNƒ’è‹`
-//==================================
-#define OBSTACLE_MAX	(10)	//áŠQ•¨‚ÌãŒÀ”
-
 ///==================================
 //ƒNƒ‰ƒXéŒ¾
 //==================================
-class Map :public Obj
+class Obstacle :public Obj
 {
 public:
-	Map();
-	~Map();
+	Obstacle();
+	~Obstacle();
 	void Update(void)override;
 	void Draw(void)override;
 };

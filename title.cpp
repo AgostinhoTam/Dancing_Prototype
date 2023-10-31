@@ -61,7 +61,7 @@ void Title::Draw(void)
 {
 	pTitleBG->Draw();
 	// ƒ|ƒŠƒSƒ“‚Ì•`‰æˆ—
-	DrawPolygon();
+	//DrawPolygon();
 
 	//•`‰æˆ—
 	DrawPlanePolygon(GetTexture(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(),GetV(),GetUW(),GetVH());

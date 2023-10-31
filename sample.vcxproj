@@ -123,8 +123,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="collision.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="obj.h" />
+    <ClInclude Include="obstacle.h" />
     <ClInclude Include="planePolygon.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="game.h" />
@@ -146,7 +148,9 @@
     <ClInclude Include="titleBG.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="collision.cpp" />
     <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="planePolygon.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="game.cpp" />
