@@ -1,25 +1,41 @@
 //===============================================
-//ƒQ[ƒ€§Œä[map.h]
-//Date:2023/10/27	Auther:—Ñ—S–ç
+//ã‚²ãƒ¼ãƒ åˆ¶å¾¡[map.h]
+//Date:2023/10/27	Auther:æ—ç¥ä¹Ÿ
 //===============================================
 #pragma once
 
 #include "obj.h"
 #include "renderer.h"
+#include "obstacle.h"
 
 //==================================
-//ƒ}ƒNƒ’è‹`
+//ãƒã‚¯ãƒ­å®šç¾©
 //==================================
-#define OBSTACLE_MAX	(10)	//áŠQ•¨‚ÌãŒÀ”
+#define OBSTACLE_MAX	(10)	//éšœå®³ç‰©ã®ä¸Šé™æ•°
+
+//==================================
+//ãƒã‚¯ãƒ­å®šç¾©
+//==================================
+#define OBSTACLE_MAX	(10)	//éšœå®³ç‰©ã®ä¸Šé™æ•°
 
 ///==================================
-//ƒNƒ‰ƒXéŒ¾
+//ã‚¯ãƒ©ã‚¹å®£è¨€
 //==================================
 class Map :public Obj
 {
+private:
+
+	Obstacle* pObstacle[OBSTACLE_MAX];
+
 public:
 	Map();
 	~Map();
 	void Update(void)override;
 	void Draw(void)override;
+
+	//Obstacleã®æƒ…å ±ã‚’å–å¾—
+	Obstacle* GetObstacle(int cnt)const {
+		return pObstacle[cnt];
+	}
+
 };

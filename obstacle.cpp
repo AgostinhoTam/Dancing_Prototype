@@ -1,10 +1,13 @@
 //===============================================
-//áŠQ•¨§Œä[obstacle.cpp]
-//Date:2023/10/30	Auther:—Ñ—S–ç
+//éšœå®³ç‰©åˆ¶å¾¡[obstacle.cpp]
+//Date:2023/10/30	Auther:æ—ç¥ä¹Ÿ
 //===============================================
 #include "obstacle.h"
 #include "Texture.h"
 #include "planePolygon.h"
+
+#include "collision.h"
+
 
 Obstacle::Obstacle()
 {
@@ -18,8 +21,7 @@ Obstacle::~Obstacle()
 
 void Obstacle::Update(void)
 {
-	//‚±‚±‚É“–‚½‚è”»’è‚É‚Â‚¢‚Ä‚Ì‚â‚Â‚ğ‘‚­
-
+	//ã“ã“ã«å½“ãŸã‚Šåˆ¤å®šã«ã¤ã„ã¦ã®ã‚„ã¤ã‚’æ›¸ã
 }
 
 void Obstacle::Draw(void)

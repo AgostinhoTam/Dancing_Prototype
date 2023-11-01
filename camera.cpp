@@ -1,8 +1,7 @@
 //=============================================================================
 //
-// カメラ処理 [camera.cpp]
-// Author : 
-//
+//カメラ処理 [camera.cpp]
+//Date:2023/10/29	Auther:林祐也
 //=============================================================================
 #include "main.h"
 #include "input.h"
@@ -182,12 +181,8 @@ CAMERA *GetCamera(void)
 	return &g_Camera;
 }
 
-D3DXVECTOR3* GetCameraPos()
-{
-	return &g_Camera.pos;
-}
 
-// カメラの視点と注視点をセット
+//カメラの視点と注視点をセット
 //カメラがターゲットに追尾
 void SetCameraAT(D3DXVECTOR3 pos)
 {
@@ -198,4 +193,15 @@ void SetCameraAT(D3DXVECTOR3 pos)
 	g_Camera.pos.x = g_Camera.at.x - sinf(g_Camera.rot.y) * g_Camera.len;
 	g_Camera.pos.z = g_Camera.at.z - cosf(g_Camera.rot.y) * g_Camera.len;
 }
+// カメラの視点と注視点と向きをセット
+// カメラを設定したオブジェクトの正面を向き続けるように
+void SetCameraDT(D3DXVECTOR3 pos, D3DXVECTOR3 rot)
+{
+	// カメラの注視点をプレイヤーの座標にしてみる
+	g_Camera.at = pos;
+	g_Camera.rot = rot;
+	// カメラの視点をカメラのY軸回転に対応させている
+	g_Camera.pos.x = g_Camera.at.x - sinf(g_Camera.rot.y) * g_Camera.len;
+	g_Camera.pos.z = g_Camera.at.z - cosf(g_Camera.rot.y) * g_Camera.len;
 
+}

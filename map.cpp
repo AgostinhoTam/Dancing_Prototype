@@ -1,11 +1,9 @@
 //===============================================
-//ƒ^ƒCƒgƒ‹§Œä[map.cpp]
-//Date:2023/10/30	Auther:—Ñ—S–ç
+//Æ’^Æ’CÆ’gÆ’â€¹ÂÂ§Å’Ã¤[map.cpp]
+//Date:2023/10/30	Auther:â€”Ã‘â€”Sâ€“Ã§
 //===============================================
 #include "map.h"
 #include "obstacle.h"
-
-Obstacle* pObstacle[OBSTACLE_MAX];
 
 Map::Map()
 {
@@ -16,9 +14,10 @@ Map::Map()
 
 	for (int i = 0; i < OBSTACLE_MAX; i++)
 	{
-		pObstacle[i]->SetPos(D3DXVECTOR3(40.0f * i, 0.0f, 40.0f * i));
+		pObstacle[i]->SetPos(D3DXVECTOR3(40.0f*i +100.0f, 0.0f, 40.0f*i));
 		pObstacle[i]->SetSize(D3DXVECTOR3(10.0f, 100.0f, 100.0f));
-		pObstacle[i]->SetScl(D3DXVECTOR3(2.0f, 6.0f, 2.0f));
+		pObstacle[i]->SetScl(D3DXVECTOR3(1.0f, 5.0f, 1.0f));
+
 		pObstacle[i]->SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	}
 }
@@ -37,8 +36,9 @@ void Map::Update(void)
 	{
 		pObstacle[i]->Update();
 		pObstacle[i]->SetPlayerPos(GetPlayerPos());
+		pObstacle[i]->SetPlayerSize(GetPlayerSize());
+		pObstacle[i]->SetPlayerScl(GetPlayerScl());
 	}
-
 }
 
 void Map::Draw(void)

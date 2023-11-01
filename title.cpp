@@ -1,6 +1,6 @@
 //===============================================
-//ƒ^ƒCƒgƒ‹§Œä[title.cpp]
-//Date:2023/07/10	Auther:—Ñ—S–ç
+//ã‚¿ã‚¤ãƒˆãƒ«åˆ¶å¾¡[title.cpp]
+//Date:2023/07/10	Auther:æ—ç¥ä¹Ÿ
 //===============================================
 #include "title.h"
 #include "titleBG.h"
@@ -11,42 +11,61 @@
 #include "planePolygon.h"
 #include "camera.h"
 #include "Texture.h"
+#include "player.h"
+#include "map.h"
+#include "collision.h"
 
-Obj* pTitleBG;
-D3DXVECTOR3 cameraPos;
+
+
 //=============================================================================
-// ‰Šú‰»ˆ—
+// åˆæœŸåŒ–å‡¦ç†
 //=============================================================================
 Title::Title()
 {
 	pTitleBG =new TitleBG();
+	pPlayer = new Player();
+	pMap = new Map();
 	SetTexture(LoadTexture((char*)"data/TEXTURE/field000.jpg"));
 	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetSize(D3DXVECTOR3(100.0f, 100.0f, 100.0f));
-	SetScl(D3DXVECTOR3(2.0f, 1.0f, 2.0f));
+	SetScl(D3DXVECTOR3(4.0f, 1.0f, 1.0f));
 	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 
-
+	for (int i = 0; i < OBSTACLE_MAX; i++)
+	{
+		pPlayer->SetObstacle(pMap->GetObstacle(i), i);
+	}
 	//SetSound(LoadSound((char*)"data/SOUND/BGM/BGM_Title.wav"));
-	//SetVolume(GetSound(), 0.5f);//1.0‚ª100“
-	//PlaySound(GetSound(), 0);//Œã‚ë‚Ì”š‚Å‰ñ”‚ğŒˆ‚ß‚éA‚OˆÈ‰º‚É‚È‚é‚Æ–³ŒÀƒ‹[ƒv‚É‚È‚é
+	//SetVolume(GetSound(), 0.5f);//1.0ãŒ100ï¼…
+	//PlaySound(GetSound(), 0);//å¾Œã‚ã®æ•°å­—ã§å›æ•°ã‚’æ±ºã‚ã‚‹ã€ï¼ä»¥ä¸‹ã«ãªã‚‹ã¨ç„¡é™ãƒ«ãƒ¼ãƒ—ã«ãªã‚‹
 }
 
 //=============================================================================
-// I—¹ˆ—
+// çµ‚äº†å‡¦ç†
 //=============================================================================
 Title::~Title()
 {
-	
+	delete pTitleBG;
+	delete pPlayer;
+	delete pMap;
+
+	UnloadModel(&model);
 }
 
 //=============================================================================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //=============================================================================
 void Title::Update()
-{
-	SetPos(*GetCameraPos()-D3DXVECTOR3(0.0f,0.0f,-250.0f));
+{	
+
 	pTitleBG->Update();
+	pPlayer->Update();
+	pMap->Update();
+
+	pMap->SetPlayerPos(pPlayer->GetPlayerPos());
+	pMap->SetPlayerSize(pPlayer->GetPlayerSize());
+	pMap->SetPlayerScl(pPlayer->GetPlayerScl());
+
 	if (GetKeyboardTrigger(DIK_RETURN))
 	{
 		//StopSound(GetSound());
@@ -55,19 +74,23 @@ void Title::Update()
 }
 
 //=============================================================================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //=============================================================================
 void Title::Draw(void)
 {
 	pTitleBG->Draw();
-	// ƒ|ƒŠƒSƒ“‚Ì•`‰æˆ—
-	//DrawPolygon();
+  pPlayer->Draw();
+	pMap->Draw();
 
-	//•`‰æˆ—
+
+	//æç”»å‡¦ç†
 	DrawPlanePolygon(GetTexture(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(),GetV(),GetUW(),GetVH());
 
-	//DrawPlanePolygon(GetTexture(), GetPos()+D3DXVECTOR3(0.0f, 500.0f,0.0f), GetSize(), GetRot(), GetScl(), GetMtxWorld());
+	DrawPlanePolygon(GetTexture(), GetPos()-D3DXVECTOR3(0.0f, 0.0f,100.0f),D3DXVECTOR3(400.0f, 0.0f, 100.0f), GetRot(), D3DXVECTOR3(1.0f,1.0f,1.0f), GetMtxWorld(), GetU(), GetV(), GetUW(), GetVH());
 
-	//2Dƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//UI
+	DrawUIPlanePolygon(GetTexture(), GetPos() - D3DXVECTOR3(100.0f, 0.0f, 0.0f), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(), GetV(), GetUW(), GetVH());
+
+	//2Dãƒãƒªã‚´ãƒ³ã®æç”»
 	//DrawPlanePolygon();
 }

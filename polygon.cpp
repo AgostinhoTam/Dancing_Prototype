@@ -68,7 +68,7 @@ void UpdatePolygon(void)
 //Scl		: スケール
 //MtxWorld	: ワールドマトリックス(ポリゴンのワールドマトリックス情報を入れる)、考えないで入れて大丈夫
 
-void DrawPolygon(DX11_MODEL Model, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld)
+void DrawPolygon(DX11_MODEL Model,D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld)
 {
 
 	D3DXMATRIX mtxScl, mtxRot, mtxTranslate;
@@ -77,7 +77,7 @@ void DrawPolygon(DX11_MODEL Model, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR
 	D3DXMatrixIdentity(&MtxWorld);
 
 	// スケールを反映
-	D3DXMatrixScaling(&mtxScl, Scl.x, Scl.y, Scl.z);
+	D3DXMatrixScaling(&mtxScl, Scl.x, Scl.y,Scl.z);
 
 	//第1引数 ＝          第2引数      ＊    第3引数
 	D3DXMatrixMultiply(&MtxWorld, &MtxWorld, &mtxScl);
