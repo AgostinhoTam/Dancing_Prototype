@@ -1,8 +1,6 @@
 //=============================================================================
-//
-// ƒJƒƒ‰ˆ— [camera.h]
-// Author : 
-//
+//ƒJƒƒ‰ˆ— [camera.h]
+//Date:2023/10/29	Auther:—Ñ—S–ç
 //=============================================================================
 #pragma once
 
@@ -38,4 +36,4 @@ void UpdateCamera(void);
 void SetCamera(void);
 CAMERA *GetCamera(void);
 void SetCameraAT(D3DXVECTOR3 pos);
-D3DXVECTOR3* GetCameraPos();
+void SetCameraDT(D3DXVECTOR3 pos, D3DXVECTOR3 rot);

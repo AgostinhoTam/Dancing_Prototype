@@ -74,7 +74,8 @@ private:
 	//汎用
 	//----------------------------------
 	int cnt = 0;			//カウント用
-	int target = 0;		//目標数値設定用
+	int target = 0;			//目標数値設定用
+	bool flag = false;		//フラグ管理用
 	//------------------------
 	//音関係
 	//------------------------
@@ -358,6 +359,10 @@ public:
 	void SetTarget(int sTarget) {
 		target = sTarget;
 	}//目標数値設定
+	void SetFlag(bool sFlag) {
+		flag = sFlag;
+	}//フラグ設定
+	
 	//------------------------
 	//音関係
 	//------------------------
@@ -579,9 +584,9 @@ public:
 	//アニメーション用/画像
 	//-----------------------------------
 
-	DX11_MODEL GetModel()const {
-		return model;
-	}//モデルの取得
+	//DX11_MODEL GetModel()const {
+	//	return model;
+	//}//モデルの取得
 	int GetTexture() const {
 		return texture;
 	}//テクスチャの取得
@@ -624,6 +629,10 @@ public:
 	int GetTarget() const {
 		return target;
 	}//目標数値取得
+	bool GetFlag()const {
+		return flag;
+	}//フラグの取得
+
 	//------------------------
 	//音関係
 	//------------------------

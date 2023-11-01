@@ -1,8 +1,6 @@
 //=============================================================================
-//
-// ínñ èàóù [planePolygon.h]
-// Author : 
-//
+// 2DÉ|ÉäÉSÉìï`âÊèàóù [planePolygon.h]
+//Date:2023/10/29	Auther:ó—óSñÁ
 //=============================================================================
 #pragma once
 
@@ -28,4 +26,4 @@ HRESULT InitPlanePolygon(void);
 void UninitPlanePolygon(void);
 void UpdatePlanePolygon(void);
 void DrawPlanePolygon(int texNo, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld, float U, float V, float UW, float VH);
-
+void DrawUIPlanePolygon(int texNo, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld, float U, float V, float UW, float VH);
