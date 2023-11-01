@@ -1,15 +1,16 @@
 //=============================================================================
-//�����蔻�菈�� [collision.cpp]
-//Date:2023/10/30	Auther:�їS��
+//当たり判定処理 [collision.cpp]
+//Date:2023/10/30	Auther:林祐也
 //=============================================================================
 #include "collision.h"
 
 //=============================================================================
-// BB�ɂ�铖���蔻�菈��
-// ��]�͍l�����Ȃ�
-// �߂�l�F�������Ă���true
+// BBによる当たり判定処理
+// 回転は考慮しない
+// 戻り値：当たってたらtrue
 //=============================================================================
-bool CollisionBB(D3DXVECTOR3 pos1, D3DXVECTOR3 size1,D3DXVECTOR3 scl1, D3DXVECTOR3 pos2, D3DXVECTOR3 size2,D3DXVECTOR3 scl2)
+
+bool CollisionBB(D3DXVECTOR3 pos1, D3DXVECTOR3 size1, D3DXVECTOR3 scl1, D3DXVECTOR3 pos2, D3DXVECTOR3 size2, D3DXVECTOR3 scl2)
 {
 	D3DXVECTOR3 min1, max1;
 	D3DXVECTOR3 min2, max2;
@@ -29,16 +30,16 @@ bool CollisionBB(D3DXVECTOR3 pos1, D3DXVECTOR3 size1,D3DXVECTOR3 scl1, D3DXVECTO
 	max2.z = pos2.z + ((size2.z * scl2.z) / 2);
 	max2.y = pos2.y + ((size2.y * scl2.y) / 2);
 
-	//X���̔���
+	//X軸の判定
 	if (min1.x < max2.x && max1.x > min2.x)
 	{
-		//Z���̔���
+		//Z軸の判定
 		if (min1.z < max2.z && max1.z > min2.z)
 		{
-			//Y���̔���
+			//Y軸の判定
 			if (min1.y < max2.y && max1.y > min2.y)
 			{
-				//�S�Ă̏�����TRUE�Ȃ�q�b�g����
+				//全ての条件がTRUEならヒット判定
 				return true;
 			}
 		}

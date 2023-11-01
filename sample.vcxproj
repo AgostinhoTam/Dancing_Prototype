@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="collision.h" />
+
     <ClInclude Include="obj.h" />
     <ClInclude Include="obstacle.h" />
     <ClInclude Include="planePolygon.h" />

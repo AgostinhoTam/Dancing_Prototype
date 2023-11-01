@@ -1,6 +1,6 @@
 //=============================================================================
-//ƒ|ƒŠƒSƒ“•\Ž¦ˆ— [planePolygon.cpp]
-//Date:2023/10/31	Auther:—Ñ—S–ç
+//ãƒãƒªã‚´ãƒ³è¡¨ç¤ºå‡¦ç† [planePolygon.cpp]
+//Date:2023/10/31	Auther:æž—ç¥ä¹Ÿ
 //=============================================================================
 #include "main.h"
 #include "input.h"
@@ -10,45 +10,47 @@
 #include "camera.h"
 
 //*****************************************************************************
-// ƒ}ƒNƒ’è‹`
+// ãƒžã‚¯ãƒ­å®šç¾©
 //*****************************************************************************
-#define NUM_VERTEX		(4)							//ƒ|ƒŠƒSƒ“‚Ì’¸“_”
+#define NUM_VERTEX		(4)							//ãƒãƒªã‚´ãƒ³ã®é ‚ç‚¹æ•°
 
 
 //*****************************************************************************
-// ƒvƒƒgƒ^ƒCƒvéŒ¾
+// ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
 //*****************************************************************************
 
 
 //*****************************************************************************
-// ƒOƒ[ƒoƒ‹•Ï”
+// ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°
 //*****************************************************************************
-static ID3D11Buffer* g_VertexBuffer = NULL;	// ’¸“_î•ñ
+static ID3D11Buffer* g_VertexBuffer = NULL;	// é ‚ç‚¹æƒ…å ±
 
-static MATERIAL			Material;			// ƒ}ƒeƒŠƒAƒ‹ƒf[ƒ^
+static MATERIAL			Material;			// ãƒžãƒ†ãƒªã‚¢ãƒ«ãƒ‡ãƒ¼ã‚¿
 
 //=============================================================================
-// ‰Šú‰»ˆ—
+// åˆæœŸåŒ–å‡¦ç†
 //=============================================================================
 HRESULT InitPlanePolygon(void)
 {
-	// ƒ}ƒeƒŠƒAƒ‹Ý’è
+	// ãƒžãƒ†ãƒªã‚¢ãƒ«è¨­å®š
 	ZeroMemory(&Material, sizeof(Material));
-	Material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);	//ŠgŽUF
-	Material.Ambient = D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f);	//ŠÂ‹«F
-	Material.Emission = D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f);	//Ž©ŒÈ”­ŒõF
-	Material.Specular = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);	//¦ƒXƒyƒLƒ…ƒ‰[‚Í–¢‘Î‰ž
-	Material.Shininess = 20;								//¦ƒXƒyƒLƒ…ƒ‰[‚Í–¢‘Î‰ž
-	Material.noTexSampling = 0;								//ƒeƒNƒXƒ`ƒƒ—L‚è:0 or ƒeƒNƒXƒ`ƒƒ–³‚µ:1
+
+	Material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);	//æ‹¡æ•£è‰²
+	Material.Ambient = D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f);	//ç’°å¢ƒè‰²
+	Material.Emission = D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f);	//è‡ªå·±ç™ºå…‰è‰²
+	Material.Specular = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);	//â€»ã‚¹ãƒšã‚­ãƒ¥ãƒ©ãƒ¼ã¯æœªå¯¾å¿œ
+	Material.Shininess = 20;								//â€»ã‚¹ãƒšã‚­ãƒ¥ãƒ©ãƒ¼ã¯æœªå¯¾å¿œ
+	Material.noTexSampling = 0;								//ãƒ†ã‚¯ã‚¹ãƒãƒ£æœ‰ã‚Š:0 or ãƒ†ã‚¯ã‚¹ãƒãƒ£ç„¡ã—:1
+
 	return S_OK;
 }
 
 //=============================================================================
-// I—¹ˆ—
+// çµ‚äº†å‡¦ç†
 //=============================================================================
 void UninitPlanePolygon(void)
 {
-	// ’¸“_ƒoƒbƒtƒ@‚Ì‰ð•ú
+	// é ‚ç‚¹ãƒãƒƒãƒ•ã‚¡ã®è§£æ”¾
 	if (g_VertexBuffer) {
 		g_VertexBuffer->Release();
 		g_VertexBuffer = NULL;
@@ -56,7 +58,7 @@ void UninitPlanePolygon(void)
 }
 
 //=============================================================================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //=============================================================================
 void UpdatePlanePolygon(void)
 {
@@ -64,42 +66,42 @@ void UpdatePlanePolygon(void)
 }
 
 //=============================================================================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //=============================================================================
 
 //=============================================================================
-// •½–Êƒ|ƒŠƒSƒ“ƒf[ƒ^Ý’è
-// À•WEƒTƒCƒYEUVŽw’è
+// å¹³é¢ãƒãƒªã‚´ãƒ³ãƒ‡ãƒ¼ã‚¿è¨­å®š
+// åº§æ¨™ãƒ»ã‚µã‚¤ã‚ºãƒ»UVæŒ‡å®š
 //=============================================================================
-//ˆø”
-//texNo		: ƒeƒNƒXƒ`ƒƒ‚ÌŽ¯•Ê”Ô†itexture.h, texture.cpp ‚ÌLoadTextureŠÖ”‚Ì–ß‚è’lj
-//Pos		: À•W
-//Size		: ƒTƒCƒY
-//Rot		: ‰ñ“]
-//Scl		: ƒXƒP[ƒ‹
-//MtxWorld	: ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX(ƒ|ƒŠƒSƒ“‚Ìƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒXî•ñ‚ð“ü‚ê‚é)Al‚¦‚È‚¢‚Å“ü‚ê‚Ä‘åä•v
-//U			: UV’lŽn“_
-//V			: UV’lŽn“_
-//UW		: UV’l‰¡•
-//VH		: UV’l‚‚³
-void DrawPlanePolygon(int texNo, D3DXVECTOR3 Pos, D3DXVECTOR3 Size,D3DXVECTOR3 Rot,D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld ,float U, float V, float UW, float VH)
+//å¼•æ•°
+//texNo		: ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®è­˜åˆ¥ç•ªå·ï¼ˆtexture.h, texture.cpp ã®LoadTextureé–¢æ•°ã®æˆ»ã‚Šå€¤ï¼‰
+//Pos		: åº§æ¨™
+//Size		: ã‚µã‚¤ã‚º
+//Rot		: å›žè»¢
+//Scl		: ã‚¹ã‚±ãƒ¼ãƒ«
+//MtxWorld	: ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒžãƒˆãƒªãƒƒã‚¯ã‚¹(ãƒãƒªã‚´ãƒ³ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒžãƒˆãƒªãƒƒã‚¯ã‚¹æƒ…å ±ã‚’å…¥ã‚Œã‚‹)ã€è€ƒãˆãªã„ã§å…¥ã‚Œã¦å¤§ä¸ˆå¤«
+//U			: UVå€¤å§‹ç‚¹
+//V			: UVå€¤å§‹ç‚¹
+//UW		: UVå€¤æ¨ªå¹…
+//VH		: UVå€¤é«˜ã•
+void DrawPlanePolygon(int texNo, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld, float U, float V, float UW, float VH)
 {
 	VERTEX_3D g_VertexArray[4] = {
-	{D3DXVECTOR3(-Size.x/2,Size.y / 2, Size.z / 2), D3DXVECTOR3(0.0f, 1.0f, 0.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR2(U, V)},
+	{D3DXVECTOR3(-Size.x / 2,Size.y / 2, Size.z / 2), D3DXVECTOR3(0.0f, 1.0f, 0.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR2(U, V)},
 	{D3DXVECTOR3(Size.x / 2,Size.y / 2,  Size.z / 2), D3DXVECTOR3(0.0f, 1.0f, 0.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR2(U + UW, V)},
 	{D3DXVECTOR3(-Size.x / 2, -Size.y / 2, -Size.z / 2), D3DXVECTOR3(0.0f, 1.0f, 0.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR2(U, V + VH)},
-	{D3DXVECTOR3(Size.x / 2, -Size.y / 2, -Size.z / 2), D3DXVECTOR3(0.0f, 1.0f, 0.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR2(U + UW, V + VH)}};
+	{D3DXVECTOR3(Size.x / 2, -Size.y / 2, -Size.z / 2), D3DXVECTOR3(0.0f, 1.0f, 0.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR2(U + UW, V + VH)} };
 
 	//------------------------------------------------------------------------------------
-	
-	// ’¸“_ƒoƒbƒtƒ@¶¬
+
+	// é ‚ç‚¹ãƒãƒƒãƒ•ã‚¡ç”Ÿæˆ
 	D3D11_BUFFER_DESC bd;
 	ZeroMemory(&bd, sizeof(bd));
 	bd.Usage = D3D11_USAGE_DYNAMIC;;
 	bd.ByteWidth = sizeof(VERTEX_3D) * NUM_VERTEX;
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	// ƒOƒ[ƒoƒ‹‚Ì’¸“_”z—ñ‚©‚ç’¸“_ƒoƒbƒtƒ@‚ð‚Â‚­‚é
+	// ã‚°ãƒ­ãƒ¼ãƒãƒ«ã®é ‚ç‚¹é…åˆ—ã‹ã‚‰é ‚ç‚¹ãƒãƒƒãƒ•ã‚¡ã‚’ã¤ãã‚‹
 	D3D11_SUBRESOURCE_DATA sd;
 	ZeroMemory(&sd, sizeof(sd));
 	sd.pSysMem = g_VertexArray;
@@ -108,63 +110,64 @@ void DrawPlanePolygon(int texNo, D3DXVECTOR3 Pos, D3DXVECTOR3 Size,D3DXVECTOR3 R
 
 	//-------------------------------------------------------------------------------------
 
-	// ’¸“_ƒoƒbƒtƒ@Ý’è
+	// é ‚ç‚¹ãƒãƒƒãƒ•ã‚¡è¨­å®š
 	UINT stride = sizeof(VERTEX_3D);
 	UINT offset = 0;
 	GetDeviceContext()->IASetVertexBuffers(0, 1, &g_VertexBuffer, &stride, &offset);
 
-	// ƒvƒŠƒ~ƒeƒBƒuƒgƒ|ƒƒWÝ’è
+	// ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–ãƒˆãƒãƒ­ã‚¸è¨­å®š
 	GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
-	// ƒ}ƒeƒŠƒAƒ‹‚ÌƒZƒbƒg
+	// ãƒžãƒ†ãƒªã‚¢ãƒ«ã®ã‚»ãƒƒãƒˆ
 	SetMaterial(Material);
 
-	// ƒeƒNƒXƒ`ƒƒÝ’è
+	// ãƒ†ã‚¯ã‚¹ãƒãƒ£è¨­å®š
 	GetDeviceContext()->PSSetShaderResources(0, 1, GetTexture(texNo));
 
 	D3DXMATRIX mtxScl, mtxRot, mtxTranslate;
 
-	// ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX‚Ì‰Šú‰»
+	// ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒžãƒˆãƒªãƒƒã‚¯ã‚¹ã®åˆæœŸåŒ–
 	D3DXMatrixIdentity(&MtxWorld);
 
-	// ƒXƒP[ƒ‹‚ð”½‰f
+	// ã‚¹ã‚±ãƒ¼ãƒ«ã‚’åæ˜ 
 	D3DXMatrixScaling(&mtxScl, Scl.x, Scl.y, Scl.z);
 	D3DXMatrixMultiply(&MtxWorld, &MtxWorld, &mtxScl);
 
-	// ‰ñ“]‚ð”½‰f
+	// å›žè»¢ã‚’åæ˜ 
 	D3DXMatrixRotationYawPitchRoll(&mtxRot, Rot.y, Rot.x, Rot.z);
 	D3DXMatrixMultiply(&MtxWorld, &MtxWorld, &mtxRot);
 
-	// ˆÚ“®‚ð”½‰f
+	// ç§»å‹•ã‚’åæ˜ 
 	D3DXMatrixTranslation(&mtxTranslate, Pos.x, Pos.y, Pos.z);
 	D3DXMatrixMultiply(&MtxWorld, &MtxWorld, &mtxTranslate);
-	// ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX‚ÌÝ’è
+	// ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒžãƒˆãƒªãƒƒã‚¯ã‚¹ã®è¨­å®š
 	SetWorldMatrix(&MtxWorld);
 
-	// ƒ|ƒŠƒSƒ“•`‰æ
+	// ãƒãƒªã‚´ãƒ³æç”»
 	GetDeviceContext()->Draw(NUM_VERTEX, 0);
 }
 
 //=============================================================================
-// UI”Å•½–Êƒ|ƒŠƒSƒ“ƒf[ƒ^Ý’è
-// À•WEƒTƒCƒYEUVŽw’è
+// UIç‰ˆå¹³é¢ãƒãƒªã‚´ãƒ³ãƒ‡ãƒ¼ã‚¿è¨­å®š
+// åº§æ¨™ãƒ»ã‚µã‚¤ã‚ºãƒ»UVæŒ‡å®š
 //=============================================================================
-//ˆø”
-//texNo		: ƒeƒNƒXƒ`ƒƒ‚ÌŽ¯•Ê”Ô†itexture.h, texture.cpp ‚ÌLoadTextureŠÖ”‚Ì–ß‚è’lj
-//Pos		: À•W
-//Size		: ƒTƒCƒY
-//Rot		: ‰ñ“]
-//Scl		: ƒXƒP[ƒ‹
-//MtxWorld	: ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX(ƒ|ƒŠƒSƒ“‚Ìƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒXî•ñ‚ð“ü‚ê‚é)Al‚¦‚È‚¢‚Å“ü‚ê‚Ä‘åä•v
-//U			: UV’lŽn“_
-//V			: UV’lŽn“_
-//UW		: UV’l‰¡•
-//VH		: UV’l‚‚³
+//å¼•æ•°
+//texNo		: ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®è­˜åˆ¥ç•ªå·ï¼ˆtexture.h, texture.cpp ã®LoadTextureé–¢æ•°ã®æˆ»ã‚Šå€¤ï¼‰
+//Pos		: åº§æ¨™
+//Size		: ã‚µã‚¤ã‚º
+//Rot		: å›žè»¢
+//Scl		: ã‚¹ã‚±ãƒ¼ãƒ«
+//MtxWorld	: ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒžãƒˆãƒªãƒƒã‚¯ã‚¹(ãƒãƒªã‚´ãƒ³ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒžãƒˆãƒªãƒƒã‚¯ã‚¹æƒ…å ±ã‚’å…¥ã‚Œã‚‹)ã€è€ƒãˆãªã„ã§å…¥ã‚Œã¦å¤§ä¸ˆå¤«
+//U			: UVå€¤å§‹ç‚¹
+//V			: UVå€¤å§‹ç‚¹
+//UW		: UVå€¤æ¨ªå¹…
+//VH		: UVå€¤é«˜ã•
 void DrawUIPlanePolygon(int texNo, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld, float U, float V, float UW, float VH)
 {
 
-	//ƒJƒƒ‰‚Ìî•ñ‚ðŽæ“¾
+	//ã‚«ãƒ¡ãƒ©ã®æƒ…å ±ã‚’å–å¾—
 	CAMERA* cam = GetCamera();
+
 	
 	float vx, vz;
 	vx = cam->pos.x - cam->at.x;
@@ -176,6 +179,7 @@ void DrawUIPlanePolygon(int texNo, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR
 	float x1 = Pos.x + (side * cosf(cam->rot.x));
 	float x2 = Pos.x + (side * sinf(cam->rot.x));
 
+
 	VERTEX_3D g_VertexArray[4] = {
 	{D3DXVECTOR3(-Size.x / 2,Size.y / 2, Size.z / 2), D3DXVECTOR3(0.0f, 1.0f, 0.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR2(U, V)},
 	{D3DXVECTOR3(Size.x / 2,Size.y / 2,  Size.z / 2), D3DXVECTOR3(0.0f, 1.0f, 0.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR2(U + UW, V)},
@@ -184,14 +188,14 @@ void DrawUIPlanePolygon(int texNo, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR
 
 	//------------------------------------------------------------------------------------
 
-	// ’¸“_ƒoƒbƒtƒ@¶¬
+	// é ‚ç‚¹ãƒãƒƒãƒ•ã‚¡ç”Ÿæˆ
 	D3D11_BUFFER_DESC bd;
 	ZeroMemory(&bd, sizeof(bd));
 	bd.Usage = D3D11_USAGE_DYNAMIC;;
 	bd.ByteWidth = sizeof(VERTEX_3D) * NUM_VERTEX;
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	// ƒOƒ[ƒoƒ‹‚Ì’¸“_”z—ñ‚©‚ç’¸“_ƒoƒbƒtƒ@‚ð‚Â‚­‚é
+	// ã‚°ãƒ­ãƒ¼ãƒãƒ«ã®é ‚ç‚¹é…åˆ—ã‹ã‚‰é ‚ç‚¹ãƒãƒƒãƒ•ã‚¡ã‚’ã¤ãã‚‹
 	D3D11_SUBRESOURCE_DATA sd;
 	ZeroMemory(&sd, sizeof(sd));
 	sd.pSysMem = g_VertexArray;
@@ -200,39 +204,40 @@ void DrawUIPlanePolygon(int texNo, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR
 
 	//-------------------------------------------------------------------------------------
 
-	// ’¸“_ƒoƒbƒtƒ@Ý’è
+	// é ‚ç‚¹ãƒãƒƒãƒ•ã‚¡è¨­å®š
 	UINT stride = sizeof(VERTEX_3D);
 	UINT offset = 0;
 	GetDeviceContext()->IASetVertexBuffers(0, 1, &g_VertexBuffer, &stride, &offset);
 
-	// ƒvƒŠƒ~ƒeƒBƒuƒgƒ|ƒƒWÝ’è
+	// ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–ãƒˆãƒãƒ­ã‚¸è¨­å®š
 	GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
-	// ƒ}ƒeƒŠƒAƒ‹‚ÌƒZƒbƒg
+	// ãƒžãƒ†ãƒªã‚¢ãƒ«ã®ã‚»ãƒƒãƒˆ
 	SetMaterial(Material);
 
-	// ƒeƒNƒXƒ`ƒƒÝ’è
+	// ãƒ†ã‚¯ã‚¹ãƒãƒ£è¨­å®š
 	GetDeviceContext()->PSSetShaderResources(0, 1, GetTexture(texNo));
 
 	D3DXMATRIX mtxScl, mtxRot, mtxTranslate;
 
-	// ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX‚Ì‰Šú‰»
+	// ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒžãƒˆãƒªãƒƒã‚¯ã‚¹ã®åˆæœŸåŒ–
 	D3DXMatrixIdentity(&MtxWorld);
 
-	// ƒXƒP[ƒ‹‚ð”½‰f
+	// ã‚¹ã‚±ãƒ¼ãƒ«ã‚’åæ˜ 
 	D3DXMatrixScaling(&mtxScl, Scl.x, Scl.y, Scl.z);
 	D3DXMatrixMultiply(&MtxWorld, &MtxWorld, &mtxScl);
 
-	// ‰ñ“]‚ð”½‰f
+	// å›žè»¢ã‚’åæ˜ 
 	D3DXMatrixRotationYawPitchRoll(&mtxRot, Rot.y, Rot.x, Rot.z);
 	D3DXMatrixMultiply(&MtxWorld, &MtxWorld, &mtxRot);
 
-	// ˆÚ“®‚ð”½‰f
+	// ç§»å‹•ã‚’åæ˜ 
+
 	D3DXMatrixTranslation(&mtxTranslate, cam->pos.x, cam->pos.y+ Pos.y, cam->pos.z + side);
 	D3DXMatrixMultiply(&MtxWorld, &MtxWorld, &mtxTranslate);
-	// ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX‚ÌÝ’è
+	// ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒžãƒˆãƒªãƒƒã‚¯ã‚¹ã®è¨­å®š
 	SetWorldMatrix(&MtxWorld);
 
-	// ƒ|ƒŠƒSƒ“•`‰æ
+	// ãƒãƒªã‚´ãƒ³æç”»
 	GetDeviceContext()->Draw(NUM_VERTEX, 0);
 }

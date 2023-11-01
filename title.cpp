@@ -1,6 +1,6 @@
 //===============================================
-//ƒ^ƒCƒgƒ‹§Œä[title.cpp]
-//Date:2023/07/10	Auther:—Ñ—S–ç
+//ã‚¿ã‚¤ãƒˆãƒ«åˆ¶å¾¡[title.cpp]
+//Date:2023/07/10	Auther:æ—ç¥ä¹Ÿ
 //===============================================
 #include "title.h"
 #include "titleBG.h"
@@ -18,7 +18,7 @@
 
 
 //=============================================================================
-// ‰Šú‰»ˆ—
+// åˆæœŸåŒ–å‡¦ç†
 //=============================================================================
 Title::Title()
 {
@@ -36,12 +36,12 @@ Title::Title()
 		pPlayer->SetObstacle(pMap->GetObstacle(i), i);
 	}
 	//SetSound(LoadSound((char*)"data/SOUND/BGM/BGM_Title.wav"));
-	//SetVolume(GetSound(), 0.5f);//1.0‚ª100“
-	//PlaySound(GetSound(), 0);//Œã‚ë‚Ì”š‚Å‰ñ”‚ğŒˆ‚ß‚éA‚OˆÈ‰º‚É‚È‚é‚Æ–³ŒÀƒ‹[ƒv‚É‚È‚é
+	//SetVolume(GetSound(), 0.5f);//1.0ãŒ100ï¼…
+	//PlaySound(GetSound(), 0);//å¾Œã‚ã®æ•°å­—ã§å›æ•°ã‚’æ±ºã‚ã‚‹ã€ï¼ä»¥ä¸‹ã«ãªã‚‹ã¨ç„¡é™ãƒ«ãƒ¼ãƒ—ã«ãªã‚‹
 }
 
 //=============================================================================
-// I—¹ˆ—
+// çµ‚äº†å‡¦ç†
 //=============================================================================
 Title::~Title()
 {
@@ -53,7 +53,7 @@ Title::~Title()
 }
 
 //=============================================================================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //=============================================================================
 void Title::Update()
 {	
@@ -74,15 +74,16 @@ void Title::Update()
 }
 
 //=============================================================================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //=============================================================================
 void Title::Draw(void)
 {
 	pTitleBG->Draw();
-	pPlayer->Draw();
+  pPlayer->Draw();
 	pMap->Draw();
 
-	//•`‰æˆ—
+
+	//æç”»å‡¦ç†
 	DrawPlanePolygon(GetTexture(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(),GetV(),GetUW(),GetVH());
 
 	DrawPlanePolygon(GetTexture(), GetPos()-D3DXVECTOR3(0.0f, 0.0f,100.0f),D3DXVECTOR3(400.0f, 0.0f, 100.0f), GetRot(), D3DXVECTOR3(1.0f,1.0f,1.0f), GetMtxWorld(), GetU(), GetV(), GetUW(), GetVH());
@@ -90,6 +91,6 @@ void Title::Draw(void)
 	//UI
 	DrawUIPlanePolygon(GetTexture(), GetPos() - D3DXVECTOR3(100.0f, 0.0f, 0.0f), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(), GetV(), GetUW(), GetVH());
 
-	//2Dƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//2Dãƒãƒªã‚´ãƒ³ã®æç”»
 	//DrawPlanePolygon();
 }

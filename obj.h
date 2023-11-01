@@ -1,8 +1,8 @@
 #pragma once
 /*==============================================================================
 
-   ƒIƒuƒWƒFƒNƒgŠÇ—[obj.h]
-														 Author :—Ñ—S–ç
+   ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç®¡ç†[obj.h]
+														 Author :æ—ç¥ä¹Ÿ
 														 Date   :2023/10/29
 --------------------------------------------------------------------------------
 
@@ -13,77 +13,77 @@
 #include "model.h"
 
 //==================================
-//ƒ}ƒNƒ’è‹`
+//ãƒã‚¯ãƒ­å®šç¾©
 //==================================
 
 //==================================
-//—ñ‹“‘ÌéŒ¾
+//åˆ—æŒ™ä½“å®£è¨€
 //==================================
 
 //==================================
-//ƒNƒ‰ƒX
+//ã‚¯ãƒ©ã‚¹
 //==================================
 class Obj
 {
 private:
 
 	//-----------------------------------
-	//À•Wˆ—/2D
+	//åº§æ¨™å‡¦ç†/2D
 	//-----------------------------------
-	D3DXVECTOR3  pos = { 0.0f,0.0f ,0.0f };			//êŠ
-	D3DXVECTOR3  size = { 0.0f,0.0f,0.0f };			//‘å‚«‚³
-	D3DXVECTOR3  vel = { 0.0f,0.0f ,0.0f };			//‘¬“x
-	D3DXVECTOR3  rot = { 0.0f,0.0f ,0.0f };			//‰ñ“]
-	D3DXVECTOR3  scl = { 0.0f,0.0f,0.0f };			//ƒXƒP[ƒ‹
-	D3DXMATRIX	mtxWorld;							// ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX
+	D3DXVECTOR3  pos = { 0.0f,0.0f ,0.0f };			//å ´æ‰€
+	D3DXVECTOR3  size = { 0.0f,0.0f,0.0f };			//å¤§ãã•
+	D3DXVECTOR3  vel = { 0.0f,0.0f ,0.0f };			//é€Ÿåº¦
+	D3DXVECTOR3  rot = { 0.0f,0.0f ,0.0f };			//å›è»¢
+	D3DXVECTOR3  scl = { 0.0f,0.0f,0.0f };			//ã‚¹ã‚±ãƒ¼ãƒ«
+	D3DXMATRIX	mtxWorld;							// ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒˆãƒªãƒƒã‚¯ã‚¹
 
 	//-----------------------------------
-	//ƒvƒŒƒCƒ„[AƒGƒlƒ~[‚ÌÀ•Wˆ—/3D
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã€ã‚¨ãƒãƒŸãƒ¼ã®åº§æ¨™å‡¦ç†/3D
 	//-----------------------------------
-	D3DXVECTOR3  playerPos = { 0.0f,0.0f,0.0f };		//ƒvƒŒƒCƒ„[‚ÌêŠ
-	D3DXVECTOR3  playerSize = { 0.0f,0.0f,0.0f };		//ƒvƒŒƒCƒ„[‚Ì‘å‚«‚³
-	D3DXVECTOR3  playerVel = { 0.0f,0.0f,0.0f };		//ƒvƒŒƒCƒ„[‚Ì‘¬“x
-	D3DXVECTOR3  playerOldpos = { 0.0f,0.0f,0.0f };		//ƒvƒŒƒCƒ„[‚Ì‰ß‹À•W
-	D3DXVECTOR3  playerRot = { 0.0f,0.0f,0.0f };		//ƒvƒŒƒCƒ„[‚Ì‰ñ“]
-	D3DXVECTOR3  playerScl = { 0.0f,0.0f,0.0f };		//ƒvƒŒƒCƒ„[‚ÌƒXƒP[ƒ‹
-	D3DXVECTOR3  enemyPos = { 0.0f,0.0f,0.0f };			//ƒGƒlƒ~[‚ÌêŠ
-	D3DXVECTOR3  enemySize = { 0.0f,0.0f,0.0f };		//ƒGƒlƒ~[‚Ì‘å‚«‚³
-	D3DXVECTOR3  enemyVel = { 0.0f,0.0f,0.0f };			//ƒGƒlƒ~[‚Ì‘¬“x
-	D3DXVECTOR3  enemyOldpos = { 0.0f,0.0f,0.0f };		//ƒGƒlƒ~[‚Ì‰ß‹À•W
-	D3DXVECTOR3  enemyRot = { 0.0f,0.0f,0.0f };			//ƒGƒlƒ~[‚Ì‰ñ“]
-	D3DXVECTOR3  enemyScl = { 0.0f,0.0f,0.0f };		//ƒvƒŒƒCƒ„[‚ÌƒXƒP[ƒ‹
+	D3DXVECTOR3  playerPos = { 0.0f,0.0f,0.0f };		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å ´æ‰€
+	D3DXVECTOR3  playerSize = { 0.0f,0.0f,0.0f };		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¤§ãã•
+	D3DXVECTOR3  playerVel = { 0.0f,0.0f,0.0f };		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®é€Ÿåº¦
+	D3DXVECTOR3  playerOldpos = { 0.0f,0.0f,0.0f };		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®éå»åº§æ¨™
+	D3DXVECTOR3  playerRot = { 0.0f,0.0f,0.0f };		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å›è»¢
+	D3DXVECTOR3  playerScl = { 0.0f,0.0f,0.0f };		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ã‚±ãƒ¼ãƒ«
+	D3DXVECTOR3  enemyPos = { 0.0f,0.0f,0.0f };			//ã‚¨ãƒãƒŸãƒ¼ã®å ´æ‰€
+	D3DXVECTOR3  enemySize = { 0.0f,0.0f,0.0f };		//ã‚¨ãƒãƒŸãƒ¼ã®å¤§ãã•
+	D3DXVECTOR3  enemyVel = { 0.0f,0.0f,0.0f };			//ã‚¨ãƒãƒŸãƒ¼ã®é€Ÿåº¦
+	D3DXVECTOR3  enemyOldpos = { 0.0f,0.0f,0.0f };		//ã‚¨ãƒãƒŸãƒ¼ã®éå»åº§æ¨™
+	D3DXVECTOR3  enemyRot = { 0.0f,0.0f,0.0f };			//ã‚¨ãƒãƒŸãƒ¼ã®å›è»¢
+	D3DXVECTOR3  enemyScl = { 0.0f,0.0f,0.0f };		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ã‚±ãƒ¼ãƒ«
 
 	//-----------------------------------
-	//ƒAƒjƒ[ƒVƒ‡ƒ“—p/‰æ‘œ
+	//ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ç”¨/ç”»åƒ
 	//-----------------------------------
-	int texture = 0;				//‰æ‘œŠi”[—p
-	float U = 1.0f;					//‰æ‘œ‚ÌêŠw’è—pX
-	float V = 1.0f;					//‰æ‘œ‚ÌêŠw’è—pY
-	float UW = 1.0f;				//‰æ‘œ‚ÌƒTƒCƒYX
-	float VH = 1.0f;				//‰æ‘œ‚ÌƒTƒCƒYY
-	float U_Cut = 1.0f;				//‰æ‘œ‚Ì‰¡²•ªŠ„”
-	float V_Cut = 1.0f;				//‰æ‘œ‚Ìc²•ªŠ„”
-	float frameCnt = 0.0f;			//•`‰æ‘¬“x‚ÌƒJƒEƒ“ƒg—p
-	float frameSet = 0.0f;			//ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌXV‘¬“xİ’è
-	float red = 1.0f;				//Ô
-	float green = 1.0f;				//—Î
-	float blue = 1.0f;				//Â
-	float degree = 1.0f;			//“§‰ß“x
+	int texture = 0;				//ç”»åƒæ ¼ç´ç”¨
+	float U = 1.0f;					//ç”»åƒã®å ´æ‰€æŒ‡å®šç”¨X
+	float V = 1.0f;					//ç”»åƒã®å ´æ‰€æŒ‡å®šç”¨Y
+	float UW = 1.0f;				//ç”»åƒã®ã‚µã‚¤ã‚ºX
+	float VH = 1.0f;				//ç”»åƒã®ã‚µã‚¤ã‚ºY
+	float U_Cut = 1.0f;				//ç”»åƒã®æ¨ªè»¸åˆ†å‰²æ•°
+	float V_Cut = 1.0f;				//ç”»åƒã®ç¸¦è»¸åˆ†å‰²æ•°
+	float frameCnt = 0.0f;			//æç”»é€Ÿåº¦ã®ã‚«ã‚¦ãƒ³ãƒˆç”¨
+	float frameSet = 0.0f;			//ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®æ›´æ–°é€Ÿåº¦è¨­å®š
+	float red = 1.0f;				//èµ¤
+	float green = 1.0f;				//ç·‘
+	float blue = 1.0f;				//é’
+	float degree = 1.0f;			//é€éåº¦
 
 	//----------------------------------
-	//”Ä—p
+	//æ±ç”¨
 	//----------------------------------
-	int cnt = 0;			//ƒJƒEƒ“ƒg—p
-	int target = 0;			//–Ú•W”’lİ’è—p
-	bool flag = false;		//ƒtƒ‰ƒOŠÇ——p
+	int cnt = 0;			//ã‚«ã‚¦ãƒ³ãƒˆç”¨
+	int target = 0;			//ç›®æ¨™æ•°å€¤è¨­å®šç”¨
+	bool flag = false;		//ãƒ•ãƒ©ã‚°ç®¡ç†ç”¨
 	//------------------------
-	//‰¹ŠÖŒW
+	//éŸ³é–¢ä¿‚
 	//------------------------
-	int bgm = 0;		//BGM—p
-	int se = 0;			//SE—p
+	int bgm = 0;		//BGMç”¨
+	int se = 0;			//SEç”¨
 
 protected:
-	DX11_MODEL model;				//3Dƒ‚ƒfƒ‹Ši”[—p
+	DX11_MODEL model;				//3Dãƒ¢ãƒ‡ãƒ«æ ¼ç´ç”¨
 
 public:
 
@@ -92,554 +92,554 @@ public:
 	virtual void Update(void) = 0;
 	virtual void Draw(void) = 0;
 	//--------------------------------------------
-	//ƒZƒbƒ^[
+	//ã‚»ãƒƒã‚¿ãƒ¼
 	//--------------------------------------------
 	//-----------------------------------
-	//À•Wˆ—/2D
+	//åº§æ¨™å‡¦ç†/2D
 	//-----------------------------------
 	void SetPos(D3DXVECTOR3 sPos) {
 		pos = sPos;
-	}//X,YÀ•W‚ÌƒZƒbƒg
+	}//X,Yåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPosX(float sPos) {
 		pos.x = sPos;
-	}//XÀ•W‚ÌƒZƒbƒg
+	}//Xåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPosY(float sPos) {
 		pos.y = sPos;
-	}//YÀ•W‚ÌƒZƒbƒg
+	}//Yåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPosZ(float sPos) {
 		pos.z = sPos;
-	}//ZÀ•W‚ÌƒZƒbƒg
+	}//Zåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetSize(D3DXVECTOR3 sSize) {
 		size = sSize;
-	}//X,YƒTƒCƒY‚ÌƒZƒbƒg
+	}//X,Yã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetSizeX(float sSize) {
 		size.x = sSize;
-	}//XƒTƒCƒY‚ÌƒZƒbƒg
+	}//Xã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetSizeY(float sSize) {
 		size.y = sSize;
-	}//YƒTƒCƒY‚ÌƒZƒbƒg
+	}//Yã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetSizeZ(float sSize) {
 		size.z = sSize;
-	}//ZƒTƒCƒY‚ÌƒZƒbƒg
+	}//Zã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetVel(D3DXVECTOR3 sVel) {
 		vel = sVel;
-	}//X,Y‘¬“x‚ÌƒZƒbƒg
+	}//X,Yé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetVelX(float sVel) {
 		vel.x = sVel;
-	}//X‘¬“x‚ÌƒZƒbƒg
+	}//Xé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetVelY(float sVel) {
 		vel.y = sVel;
-	}//Y‘¬“x‚ÌƒZƒbƒg
+	}//Yé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetVelZ(float sVel) {
 		vel.z = sVel;
-	}//Z‘¬“x‚ÌƒZƒbƒg
+	}//Zé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetRot(D3DXVECTOR3 sRot) {
 		rot = sRot;
-	}//‰ñ“]‚ÌƒZƒbƒg
+	}//å›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetRotX(float sRot) {
 		rot.x = sRot;
-	}//X‰ñ“]‚ÌƒZƒbƒg
+	}//Xå›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetRotY(float sRot) {
 		rot.y = sRot;
-	}//Y‰ñ“]‚ÌƒZƒbƒg
+	}//Yå›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetRotZ(float sRot) {
 		rot.z = sRot;
-	}//Z‰ñ“]‚ÌƒZƒbƒg
+	}//Zå›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetScl(D3DXVECTOR3 sScl) {
 		scl = sScl;
-	}//ƒXƒP[ƒ‹‚ÌƒZƒbƒg
+	}//ã‚¹ã‚±ãƒ¼ãƒ«ã®ã‚»ãƒƒãƒˆ
 	void SetSclX(float sScl) {
 		scl.x = sScl;
-	}//X‰ñ“]‚ÌƒZƒbƒg
+	}//Xå›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetSclY(float sScl) {
 		scl.y = sScl;
-	}//Y‰ñ“]‚ÌƒZƒbƒg
+	}//Yå›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetSclZ(float sScl) {
 		scl.z = sScl;
-	}//Z‰ñ“]‚ÌƒZƒbƒg
+	}//Zå›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetMtxWorld(D3DXMATRIX mtx) {
 		mtxWorld = mtx;
-	}//ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX‚Ìİ’è
+	}//ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒˆãƒªãƒƒã‚¯ã‚¹ã®è¨­å®š
 
 	//-----------------------------------
-	//ƒvƒŒƒCƒ„[AƒGƒlƒ~[‚ÌÀ•Wˆ—
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã€ã‚¨ãƒãƒŸãƒ¼ã®åº§æ¨™å‡¦ç†
 	//-----------------------------------
 	void SetPlayerPos(D3DXVECTOR3 sPos) {
 		playerPos = sPos;
-	}//X,Y,ZÀ•W‚ÌƒZƒbƒg
+	}//X,Y,Zåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerPosX(float sPos) {
 		playerPos.x = sPos;
-	}//XÀ•W‚ÌƒZƒbƒg
+	}//Xåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerPosY(float sPos) {
 		playerPos.y = sPos;
-	}//YÀ•W‚ÌƒZƒbƒg
+	}//Yåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerPosZ(float sPos) {
 		playerPos.z = sPos;
-	}//ZÀ•W‚ÌƒZƒbƒg
+	}//Zåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerSize(D3DXVECTOR3 sSize) {
 		playerSize = sSize;
-	}//X,Y,ZƒTƒCƒY‚ÌƒZƒbƒg
+	}//X,Y,Zã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetPlayerSizeX(float sSize) {
 		playerSize.x = sSize;
-	}//XƒTƒCƒY‚ÌƒZƒbƒg
+	}//Xã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetPlayerSizeY(float sSize) {
 		playerSize.y = sSize;
-	}//YƒTƒCƒY‚ÌƒZƒbƒg
+	}//Yã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetPlayerSizeZ(float sSize) {
 		playerSize.z = sSize;
-	}//ZƒTƒCƒY‚ÌƒZƒbƒg
+	}//Zã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetPlayerVel(D3DXVECTOR3 sVel) {
 		playerVel = sVel;
-	}//X,Y‘¬“x‚ÌƒZƒbƒg
+	}//X,Yé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerVelX(float sVel) {
 		playerVel.x = sVel;
-	}//X‘¬“x‚ÌƒZƒbƒg
+	}//Xé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerVelY(float sVel) {
 		playerVel.y = sVel;
-	}//Y‘¬“x‚ÌƒZƒbƒg
+	}//Yé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerVelZ(float sVel) {
 		playerVel.z = sVel;
-	}//Z‘¬“x‚ÌƒZƒbƒg
+	}//Zé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerOldpos(D3DXVECTOR3 sOldpos) {
 		playerOldpos = sOldpos;
-	}//X,Y,Z‰ß‹À•W‚ÌƒZƒbƒg
+	}//X,Y,Zéå»åº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerOldposX(float sOldpos) {
 		playerOldpos.x = sOldpos;
-	}//X‰ß‹À•W‚ÌƒZƒbƒg
+	}//Xéå»åº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerOldposY(float sOldpos) {
 		playerOldpos.y = sOldpos;
-	}//Y‰ß‹À•W‚ÌƒZƒbƒg
+	}//Yéå»åº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerOldposZ(float sOldpos) {
 		playerOldpos.z = sOldpos;
-	}//Z‰ß‹À•W‚ÌƒZƒbƒg
+	}//Zéå»åº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerRot(D3DXVECTOR3 sPlayerRot) {
 		playerRot = sPlayerRot;
-	}//ƒvƒŒƒCƒ„[‚Ì‰ñ“]‚ÌƒZƒbƒg
+	}//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerRotX(float sPlayerRot) {
 		playerRot.x = sPlayerRot;
-	}//X‰ñ“]‚ÌƒvƒŒƒCƒ„[‚ÌƒZƒbƒg
+	}//Xå›è»¢ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerRotY(float sPlayerRot) {
 		playerRot.y = sPlayerRot;
-	}//Y‰ñ“]‚ÌƒvƒŒƒCƒ„[‚ÌƒZƒbƒg
+	}//Yå›è»¢ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerRotZ(float sPlayerRot) {
 		playerRot.z = sPlayerRot;
-	}//Z‰ñ“]‚ÌƒvƒŒƒCƒ„[‚ÌƒZƒbƒg
+	}//Zå›è»¢ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerScl(D3DXVECTOR3 sPlayerScl) {
 		playerScl = sPlayerScl;
-	}//ƒXƒP[ƒ‹‚ÌƒZƒbƒg
+	}//ã‚¹ã‚±ãƒ¼ãƒ«ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerSclX(float sPlayerScl) {
 		playerScl.x = sPlayerScl;
-	}//X‰ñ“]‚ÌƒZƒbƒg
+	}//Xå›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerSclY(float sPlayerScl) {
 		playerScl.y = sPlayerScl;
-	}//Y‰ñ“]‚ÌƒZƒbƒg
+	}//Yå›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetPlayerSclZ(float sPlayerScl) {
 		playerScl.z = sPlayerScl;
-	}//Z‰ñ“]‚ÌƒZƒbƒg
+	}//Zå›è»¢ã®ã‚»ãƒƒãƒˆ
 
 	void SetEnemyPos(D3DXVECTOR3 sPos) {
 		enemyPos = sPos;
-	}//X,Y,ZÀ•W‚ÌƒZƒbƒg
+	}//X,Y,Zåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyPosX(float sPos) {
 		enemyPos.x = sPos;
-	}//XÀ•W‚ÌƒZƒbƒg
+	}//Xåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyPosY(float sPos) {
 		enemyPos.y = sPos;
-	}//YÀ•W‚ÌƒZƒbƒg
+	}//Yåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyPosZ(float sPos) {
 		enemyPos.z = sPos;
-	}//ZÀ•W‚ÌƒZƒbƒg
+	}//Zåº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetEnemySize(D3DXVECTOR3 sSize) {
 		enemySize = sSize;
-	}//X,Y,ZƒTƒCƒY‚ÌƒZƒbƒg
+	}//X,Y,Zã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetEnemySizeX(float sSize) {
 		enemySize.x = sSize;
-	}//XƒTƒCƒY‚ÌƒZƒbƒg
+	}//Xã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetEnemySizeY(float sSize) {
 		enemySize.y = sSize;
-	}//YƒTƒCƒY‚ÌƒZƒbƒg
+	}//Yã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetEnemySizeZ(float sSize) {
 		enemySize.z = sSize;
-	}//ZƒTƒCƒY‚ÌƒZƒbƒg
+	}//Zã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
 	void SetEnemyVel(D3DXVECTOR3 sVel) {
 		enemyVel = sVel;
-	}//X,Y‘¬“x‚ÌƒZƒbƒg
+	}//X,Yé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyVelX(float sVel) {
 		enemyVel.x = sVel;
-	}//X‘¬“x‚ÌƒZƒbƒg
+	}//Xé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyVelY(float sVel) {
 		enemyVel.y = sVel;
-	}//Y‘¬“x‚ÌƒZƒbƒg
+	}//Yé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyVelZ(float sVel) {
 		enemyVel.z = sVel;
-	}//Z‘¬“x‚ÌƒZƒbƒg
+	}//Zé€Ÿåº¦ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyOldpos(D3DXVECTOR3 sOldpos) {
 		enemyOldpos = sOldpos;
-	}//X,Y,Z‰ß‹À•W‚ÌƒZƒbƒg
+	}//X,Y,Zéå»åº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyOldposX(float sOldpos) {
 		enemyOldpos.x = sOldpos;
-	}//X‰ß‹À•W‚ÌƒZƒbƒg
+	}//Xéå»åº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyOldposY(float sOldpos) {
 		enemyOldpos.y = sOldpos;
-	}//Y‰ß‹À•W‚ÌƒZƒbƒg
+	}//Yéå»åº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyOldposZ(float sOldpos) {
 		enemyOldpos.z = sOldpos;
-	}//Z‰ß‹À•W‚ÌƒZƒbƒg
+	}//Zéå»åº§æ¨™ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyRot(D3DXVECTOR3 sEnemyRot) {
 		enemyRot = sEnemyRot;
-	}//ƒvƒŒƒCƒ„[‚Ì‰ñ“]‚ÌƒZƒbƒg
+	}//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å›è»¢ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyRotX(float sEnemyRot) {
 		enemyRot.x = sEnemyRot;
-	}//X‰ñ“]‚ÌƒvƒŒƒCƒ„[‚ÌƒZƒbƒg
+	}//Xå›è»¢ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyRotY(float sEnemyRot) {
 		enemyRot.y = sEnemyRot;
-	}//Y‰ñ“]‚ÌƒvƒŒƒCƒ„[‚ÌƒZƒbƒg
+	}//Yå›è»¢ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyRotZ(float sEnemyRot) {
 		enemyRot.z = sEnemyRot;
-	}//Z‰ñ“]‚ÌƒvƒŒƒCƒ„[‚ÌƒZƒbƒg
+	}//Zå›è»¢ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚»ãƒƒãƒˆ
 	void SetEnemyScl(D3DXVECTOR3 sEnemyScl) {
 		enemyScl = sEnemyScl;
-	}//ƒXƒP[ƒ‹‚ÌƒZƒbƒg
+	}//ã‚¹ã‚±ãƒ¼ãƒ«ã®ã‚»ãƒƒãƒˆ
 	void SetEnemySclX(float sEnemyScl) {
 		enemyScl.x = sEnemyScl;
-	}//XƒXƒP[ƒ‹‚ÌƒZƒbƒg
+	}//Xã‚¹ã‚±ãƒ¼ãƒ«ã®ã‚»ãƒƒãƒˆ
 	void SetEnemySclY(float sEnemyScl) {
 		enemyScl.y = sEnemyScl;
-	}//YƒXƒP[ƒ‹‚ÌƒZƒbƒg
+	}//Yã‚¹ã‚±ãƒ¼ãƒ«ã®ã‚»ãƒƒãƒˆ
 	void SetEnemySclZ(float sEnemyScl) {
 		enemyScl.z = sEnemyScl;
-	}//ZƒXƒP[ƒ‹‚ÌƒZƒbƒg
+	}//Zã‚¹ã‚±ãƒ¼ãƒ«ã®ã‚»ãƒƒãƒˆ
 
 	//-----------------------------------
-	//ƒAƒjƒ[ƒVƒ‡ƒ“—p/‰æ‘œ
+	//ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ç”¨/ç”»åƒ
 	//-----------------------------------
 
 	//void SetModel(DX11_MODEL sModel) {
 	//	model = sModel;
-	//}//ƒ‚ƒfƒ‹‚ÌƒZƒbƒg
+	//}//ãƒ¢ãƒ‡ãƒ«ã®ã‚»ãƒƒãƒˆ
 	void SetTexture(int sTex) {
 		texture = sTex;
-	}//ƒeƒNƒXƒ`ƒƒ‚ÌƒZƒbƒg
+	}//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ã‚»ãƒƒãƒˆ
 	void SetU(float sU) {
 		U = sU;
-	}//UV’l‚ÌU‚Ìn“_İ’è
+	}//UVå€¤ã®Uã®å§‹ç‚¹è¨­å®š
 	void SetV(float sV) {
 		V = sV;
-	}//UV’l‚ÌV‚Ìn“_İ’è
+	}//UVå€¤ã®Vã®å§‹ç‚¹è¨­å®š
 	void SetUW(float sUW) {
 		UW = sUW;
-	}//UV’l‚Ì‰¡•İ’è
+	}//UVå€¤ã®æ¨ªå¹…è¨­å®š
 	void SetVH(float sVH) {
 		VH = sVH;
-	}//UV’l‚Ì—§•İ’è
+	}//UVå€¤ã®ç«‹å¹…è¨­å®š
 	void SetU_Cut(float sCut) {
 		U_Cut = sCut;
-	}//‰¡‚Ì‰æ‘œ•ªŠ„”İ’è
+	}//æ¨ªã®ç”»åƒåˆ†å‰²æ•°è¨­å®š
 	void SetV_Cut(float sCut) {
 		V_Cut = sCut;
-	}//c‚Ì‰æ‘œ•ªŠ„”İ’è
+	}//ç¸¦ã®ç”»åƒåˆ†å‰²æ•°è¨­å®š
 	void SetRed(float sRed) {
 		red = sRed;
-	}//ÔFİ’è
+	}//èµ¤è‰²è¨­å®š
 	void SetGreen(float sGreen) {
 		green = sGreen;
-	}//—ÎFİ’è
+	}//ç·‘è‰²è¨­å®š
 	void SetBlue(float sBlue) {
 		blue = sBlue;
-	}//ÂFİ’è
+	}//é’è‰²è¨­å®š
 	void SetDegree(float sDgree) {
 		degree = sDgree;
-	}//“§‰ß“xİ’è
+	}//é€éåº¦è¨­å®š
 	//------------------------
-	//”Ä—p
+	//æ±ç”¨
 	//------------------------
 	void SetCnt(int sCnt) {
 		cnt = sCnt;
-	}//ƒJƒEƒ“ƒgİ’è
+	}//ã‚«ã‚¦ãƒ³ãƒˆè¨­å®š
 	void SetTarget(int sTarget) {
 		target = sTarget;
-	}//–Ú•W”’lİ’è
+	}//ç›®æ¨™æ•°å€¤è¨­å®š
 	void SetFlag(bool sFlag) {
 		flag = sFlag;
-	}//ƒtƒ‰ƒOİ’è
-	
+	}//ãƒ•ãƒ©ã‚°è¨­å®š
+
 	//------------------------
-	//‰¹ŠÖŒW
+	//éŸ³é–¢ä¿‚
 	//------------------------
 	void SetBGM(int sBGM) {
 		bgm = sBGM;
-	}//BGM‚Ìİ’è
+	}//BGMã®è¨­å®š
 	void SetSE(int sSE) {
 		se = sSE;
-	}//SE‚Ìİ’è
+	}//SEã®è¨­å®š
 
 	//--------------------------------------------
-	//ƒQƒbƒ^[
+	//ã‚²ãƒƒã‚¿ãƒ¼
 	//--------------------------------------------
 	//-----------------------------------
-	//À•Wˆ—/2D
+	//åº§æ¨™å‡¦ç†/2D
 	//-----------------------------------
 	D3DXVECTOR3 GetPos() const {
 		return pos;
-	}//X,YÀ•W‚Ìæ“¾
+	}//X,Yåº§æ¨™ã®å–å¾—
 	float GetPosX()const {
 		return pos.x;
-	}//XÀ•W‚Ìæ“¾
+	}//Xåº§æ¨™ã®å–å¾—
 	float GetPosY() const {
 		return pos.y;
-	}//YÀ•W‚Ìæ“¾
+	}//Yåº§æ¨™ã®å–å¾—
 	float GetPosZ() const {
 		return pos.z;
-	}//ZÀ•W‚Ìæ“¾
+	}//Zåº§æ¨™ã®å–å¾—
 	D3DXVECTOR3 GetSize() const {
 		return size;
-	}//X,YƒTƒCƒY‚Ìæ“¾
+	}//X,Yã‚µã‚¤ã‚ºã®å–å¾—
 	float GetSizeX() const {
 		return size.x;
-	}//XƒTƒCƒY‚Ìæ“¾
+	}//Xã‚µã‚¤ã‚ºã®å–å¾—
 	float GetSizeY() const {
 		return size.y;
-	}//YƒTƒCƒY‚Ìæ“¾
+	}//Yã‚µã‚¤ã‚ºã®å–å¾—
 	float GetSizeZ() const {
 		return size.z;
-	}//YƒTƒCƒY‚Ìæ“¾
+	}//Yã‚µã‚¤ã‚ºã®å–å¾—
 	D3DXVECTOR3 GetVel() const {
 		return vel;
-	}//X,YƒTƒCƒY‚Ìæ“¾
+	}//X,Yã‚µã‚¤ã‚ºã®å–å¾—
 	float GetVelX() const {
 		return vel.x;
-	}//X‘¬“x‚Ìæ“¾
+	}//Xé€Ÿåº¦ã®å–å¾—
 	float GetVelY() const {
 		return vel.y;
-	}//Y‘¬“x‚Ìæ“¾
+	}//Yé€Ÿåº¦ã®å–å¾—
 	float GetVelZ() const {
 		return vel.z;
-	}//Z‘¬“x‚Ìæ“¾
+	}//Zé€Ÿåº¦ã®å–å¾—
 	D3DXVECTOR3 GetRot() const {
 		return rot;
-	}//X,YƒTƒCƒY‚Ìæ“¾
+	}//X,Yã‚µã‚¤ã‚ºã®å–å¾—
 	float GetRotX() const {
 		return rot.x;
-	}//X‰ñ“]‚Ìæ“¾
+	}//Xå›è»¢ã®å–å¾—
 	float GetRotY() const {
 		return rot.y;
-	}//Y‰ñ“]‚Ìæ“¾
+	}//Yå›è»¢ã®å–å¾—
 	float GetRotZ() const {
 		return rot.z;
-	}//Z‰ñ“]‚Ìæ“¾
+	}//Zå›è»¢ã®å–å¾—
 	D3DXVECTOR3 GetScl() const {
 		return scl;
-	}//X,Y,ZƒXƒP[ƒ‹‚Ìæ“¾
+	}//X,Y,Zã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 	float GetSclX() const {
 		return scl.x;
-	}//XƒXƒP[ƒ‹‚Ìæ“¾
+	}//Xã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 	float GetSclY() const {
 		return scl.y;
-	}//YƒXƒP[ƒ‹‚Ìæ“¾
+	}//Yã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 	float GetSclZ() const {
 		return scl.z;
-	}//ZƒXƒP[ƒ‹‚Ìæ“¾
+	}//Zã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 
 	D3DXMATRIX GetMtxWorld()const {
 		return mtxWorld;
-	}//ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX‚Ìæ“¾
+	}//ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒˆãƒªãƒƒã‚¯ã‚¹ã®å–å¾—
 	//-----------------------------------
-	//ƒvƒŒƒCƒ„[AƒGƒlƒ~[‚ÌÀ•Wˆ—
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã€ã‚¨ãƒãƒŸãƒ¼ã®åº§æ¨™å‡¦ç†
 	//-----------------------------------
 	D3DXVECTOR3 GetPlayerPos() const {
 		return playerPos;
-	}//X,Y,ZƒvƒŒƒCƒ„[À•W‚Ìæ“¾
+	}//X,Y,Zãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åº§æ¨™ã®å–å¾—
 	float GetPlayerPosX()const {
 		return playerPos.x;
-	}//XƒvƒŒƒCƒ„[À•W‚Ìæ“¾
+	}//Xãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åº§æ¨™ã®å–å¾—
 	float GetPlayerPosY() const {
 		return playerPos.y;
-	}//XƒvƒŒƒCƒ„[À•W‚Ìæ“¾
+	}//Xãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åº§æ¨™ã®å–å¾—
 	float GetPlayerPosZ() const {
 		return playerPos.z;
-	}//ZƒvƒŒƒCƒ„[À•W‚Ìæ“¾
+	}//Zãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åº§æ¨™ã®å–å¾—
 	D3DXVECTOR3 GetPlayerSize() const {
 		return playerSize;
-	}//X,YƒvƒŒƒCƒ„[ƒTƒCƒY‚Ìæ“¾
+	}//X,Yãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚µã‚¤ã‚ºã®å–å¾—
 	float GetPlayerSizeX() const {
 		return playerSize.x;
-	}//XƒvƒŒƒCƒ„[ƒTƒCƒY‚Ìæ“¾
+	}//Xãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚µã‚¤ã‚ºã®å–å¾—
 	float GetPlayerSizeY() const {
 		return playerSize.y;
-	}//YƒvƒŒƒCƒ„[ƒTƒCƒY‚Ìæ“¾
+	}//Yãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚µã‚¤ã‚ºã®å–å¾—
 	float GetPlayerSizeZ() const {
 		return playerSize.z;
-	}//ZƒvƒŒƒCƒ„[ƒTƒCƒY‚Ìæ“¾
+	}//Zãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚µã‚¤ã‚ºã®å–å¾—
 	D3DXVECTOR3 GetPlayerVel() const {
 		return playerVel;
-	}//X,Y,ZƒvƒŒƒCƒ„[‘¬“x‚Ìæ“¾
+	}//X,Y,Zãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é€Ÿåº¦ã®å–å¾—
 	float GetPlayerVelX() const {
 		return playerVel.x;
-	}//XƒvƒŒƒCƒ„[‘¬“x‚Ìæ“¾
+	}//Xãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é€Ÿåº¦ã®å–å¾—
 	float GetPlayerVelY() const {
 		return playerVel.y;
-	}//YƒvƒŒƒCƒ„[‚Ì‘¬“xæ“¾
+	}//Yãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®é€Ÿåº¦å–å¾—
 	float GetPlayerVelZ() const {
 		return playerVel.z;
-	}//ZƒvƒŒƒCƒ„[‚Ì‘¬“xæ“¾
+	}//Zãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®é€Ÿåº¦å–å¾—
 	D3DXVECTOR3 GetPlayerOldpos() const {
 		return playerOldpos;
-	}//X,Y,ZƒvƒŒƒCƒ„[‰ß‹À•W‚Ìæ“¾
+	}//X,Y,Zãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼éå»åº§æ¨™ã®å–å¾—
 	float GetPlayerOldposX() const {
 		return playerOldpos.x;
-	}//XƒvƒŒƒCƒ„[‰ß‹À•W‚Ìæ“¾
+	}//Xãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼éå»åº§æ¨™ã®å–å¾—
 	float GetPlayerOldposY() const {
 		return playerOldpos.y;
-	}//YƒvƒŒƒCƒ„[‰ß‹À•W‚Ìæ“¾
+	}//Yãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼éå»åº§æ¨™ã®å–å¾—
 	float GetPlayerOldposZ() const {
 		return playerOldpos.z;
-	}//ZƒvƒŒƒCƒ„[‰ß‹À•W‚Ìæ“¾
+	}//Zãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼éå»åº§æ¨™ã®å–å¾—
 	D3DXVECTOR3 GetPlayerRot() const {
 		return playerRot;
-	}//X,Y,ZƒvƒŒƒCƒ„[‰ñ“]’l‚Ìæ“¾
+	}//X,Y,Zãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å›è»¢å€¤ã®å–å¾—
 	float GetPlayerRotX() const {
 		return playerRot.x;
-	}//XƒvƒŒƒCƒ„[‰ñ“]’l‚Ìæ“¾
+	}//Xãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å›è»¢å€¤ã®å–å¾—
 	float GetPlayerRotY() const {
 		return playerRot.y;
-	}//YƒvƒŒƒCƒ„[‰ñ“]’l‚Ìæ“¾
+	}//Yãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å›è»¢å€¤ã®å–å¾—
 	float GetPlayerRotZ() const {
 		return playerRot.z;
-	}//ZƒvƒŒƒCƒ„[‰ñ“]’l‚Ìæ“¾
+	}//Zãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å›è»¢å€¤ã®å–å¾—
 	D3DXVECTOR3 GetPlayerScl() const {
 		return playerScl;
-	}//X,Y,ZƒXƒP[ƒ‹‚Ìæ“¾
+	}//X,Y,Zã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 	float GetPlayerSclX() const {
 		return playerScl.x;
-	}//XƒXƒP[ƒ‹‚Ìæ“¾
+	}//Xã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 	float GetPlayerSclY() const {
 		return playerScl.y;
-	}//YƒXƒP[ƒ‹‚Ìæ“¾
+	}//Yã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 	float GetPlayerSclZ() const {
 		return playerScl.z;
-	}//ZƒXƒP[ƒ‹‚Ìæ“¾
+	}//Zã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 
 	D3DXVECTOR3 GetEnemyPos() const {
 		return enemyPos;
-	}//X,Y,ZƒGƒlƒ~[À•W‚Ìæ“¾
+	}//X,Y,Zã‚¨ãƒãƒŸãƒ¼åº§æ¨™ã®å–å¾—
 	float GetEnemyPosX()const {
 		return enemyPos.x;
-	}//XƒGƒlƒ~[À•W‚Ìæ“¾
+	}//Xã‚¨ãƒãƒŸãƒ¼åº§æ¨™ã®å–å¾—
 	float GetEnemyPosY() const {
 		return enemyPos.y;
-	}//XƒGƒlƒ~[À•W‚Ìæ“¾
+	}//Xã‚¨ãƒãƒŸãƒ¼åº§æ¨™ã®å–å¾—
 	float GetEnemyPosZ() const {
 		return enemyPos.z;
-	}//ZƒGƒlƒ~[À•W‚Ìæ“¾
+	}//Zã‚¨ãƒãƒŸãƒ¼åº§æ¨™ã®å–å¾—
 	D3DXVECTOR3 GetEnemySize() const {
 		return enemySize;
-	}//X,YƒGƒlƒ~[ƒTƒCƒY‚Ìæ“¾
+	}//X,Yã‚¨ãƒãƒŸãƒ¼ã‚µã‚¤ã‚ºã®å–å¾—
 	float GetEnemySizeX() const {
 		return enemySize.x;
-	}//XƒGƒlƒ~[ƒTƒCƒY‚Ìæ“¾
+	}//Xã‚¨ãƒãƒŸãƒ¼ã‚µã‚¤ã‚ºã®å–å¾—
 	float GetEnemySizeY() const {
 		return enemySize.y;
-	}//YƒGƒlƒ~[ƒTƒCƒY‚Ìæ“¾
+	}//Yã‚¨ãƒãƒŸãƒ¼ã‚µã‚¤ã‚ºã®å–å¾—
 	float GetEnemySizeZ() const {
 		return enemySize.z;
-	}//ZƒGƒlƒ~[ƒTƒCƒY‚Ìæ“¾
+	}//Zã‚¨ãƒãƒŸãƒ¼ã‚µã‚¤ã‚ºã®å–å¾—
 	D3DXVECTOR3 GetEnemyVel() const {
 		return enemyVel;
-	}//X,Y,ZƒGƒlƒ~[‘¬“x‚Ìæ“¾
+	}//X,Y,Zã‚¨ãƒãƒŸãƒ¼é€Ÿåº¦ã®å–å¾—
 	float GetEnemyVelX() const {
 		return enemyVel.x;
-	}//XƒGƒlƒ~[‘¬“x‚Ìæ“¾
+	}//Xã‚¨ãƒãƒŸãƒ¼é€Ÿåº¦ã®å–å¾—
 	float GetEnemyVelY() const {
 		return enemyVel.y;
-	}//YƒGƒlƒ~[‚Ì‘¬“xæ“¾
+	}//Yã‚¨ãƒãƒŸãƒ¼ã®é€Ÿåº¦å–å¾—
 	float GetEnemyVelZ() const {
 		return enemyVel.z;
-	}//ZƒGƒlƒ~[‚Ì‘¬“xæ“¾
+	}//Zã‚¨ãƒãƒŸãƒ¼ã®é€Ÿåº¦å–å¾—
 	D3DXVECTOR3 GetEnemyOldpos() const {
 		return enemyOldpos;
-	}//X,Y,ZƒGƒlƒ~[‰ß‹À•W‚Ìæ“¾
+	}//X,Y,Zã‚¨ãƒãƒŸãƒ¼éå»åº§æ¨™ã®å–å¾—
 	float GetEnemyOldposX() const {
 		return enemyOldpos.x;
-	}//XƒGƒlƒ~[‰ß‹À•W‚Ìæ“¾
+	}//Xã‚¨ãƒãƒŸãƒ¼éå»åº§æ¨™ã®å–å¾—
 	float GetEnemyOldposY() const {
 		return enemyOldpos.y;
-	}//YƒGƒlƒ~[‰ß‹À•W‚Ìæ“¾
+	}//Yã‚¨ãƒãƒŸãƒ¼éå»åº§æ¨™ã®å–å¾—
 	float GetEnemyOldposZ() const {
 		return enemyOldpos.z;
-	}//ZƒGƒlƒ~[‰ß‹À•W‚Ìæ“¾
+	}//Zã‚¨ãƒãƒŸãƒ¼éå»åº§æ¨™ã®å–å¾—
 	D3DXVECTOR3 GetEnemyScl() const {
 		return enemyScl;
-	}//X,Y,ZƒXƒP[ƒ‹‚Ìæ“¾
+	}//X,Y,Zã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 	float GetEnemySclX() const {
 		return enemyScl.x;
-	}//XƒXƒP[ƒ‹‚Ìæ“¾
+	}//Xã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 	float GetEnemySclY() const {
 		return enemyScl.y;
-	}//YƒXƒP[ƒ‹‚Ìæ“¾
+	}//Yã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 	float GetEnemySclZ() const {
 		return enemyScl.z;
-	}//ZƒXƒP[ƒ‹‚Ìæ“¾
+	}//Zã‚¹ã‚±ãƒ¼ãƒ«ã®å–å¾—
 
 	//-----------------------------------
-	//ƒAƒjƒ[ƒVƒ‡ƒ“—p/‰æ‘œ
+	//ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ç”¨/ç”»åƒ
 	//-----------------------------------
 
 	//DX11_MODEL GetModel()const {
 	//	return model;
-	//}//ƒ‚ƒfƒ‹‚Ìæ“¾
+	//}//ãƒ¢ãƒ‡ãƒ«ã®å–å¾—
 	int GetTexture() const {
 		return texture;
-	}//ƒeƒNƒXƒ`ƒƒ‚Ìæ“¾
+	}//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®å–å¾—
 	float GetU() const {
 		return U;
-	}//UV’l‚ÌUn“_æ“¾
+	}//UVå€¤ã®Uå§‹ç‚¹å–å¾—
 	float GetV() const {
 		return V;
-	}//UV’l‚ÌVn“_æ“¾
+	}//UVå€¤ã®Vå§‹ç‚¹å–å¾—
 	float GetUW() const {
 		return UW;
-	}//UV’l‚ÌUWn“_æ“¾
+	}//UVå€¤ã®UWå§‹ç‚¹å–å¾—
 	float GetVH() const {
 		return VH;
-	}//UV’l‚ÌVHn“_æ“¾
+	}//UVå€¤ã®VHå§‹ç‚¹å–å¾—
 	float GetU_Cut() const {
 		return U_Cut;
-	}//U‚Ì‰æ‘œ•ªŠ„”æ“¾
+	}//Uã®ç”»åƒåˆ†å‰²æ•°å–å¾—
 	float GetV_Cut() const {
 		return V_Cut;
-	}//V‚Ì‰æ‘œ•ªŠ„”æ“¾
+	}//Vã®ç”»åƒåˆ†å‰²æ•°å–å¾—
 	float GetRed() const {
 		return red;
-	}//ÔFî•ñ‚Ìæ“¾
+	}//èµ¤è‰²æƒ…å ±ã®å–å¾—
 	float GetGreen() const {
 		return green;
-	}//—ÎFî•ñ‚Ìæ“¾
+	}//ç·‘è‰²æƒ…å ±ã®å–å¾—
 	float GetBlue() const {
 		return blue;
-	}//ÂFî•ñ‚Ìæ“¾
+	}//é’è‰²æƒ…å ±ã®å–å¾—
 	float GetDegree() const {
 		return degree;
-	}//“§‰ß“xî•ñ‚Ìæ“¾
+	}//é€éåº¦æƒ…å ±ã®å–å¾—
 	//------------------------
-	//”Ä—p
+	//æ±ç”¨
 	//------------------------
 	int GetCnt() const {
 		return cnt;
-	}//ƒJƒEƒ“ƒgæ“¾
+	}//ã‚«ã‚¦ãƒ³ãƒˆå–å¾—
 	int GetTarget() const {
 		return target;
-	}//–Ú•W”’læ“¾
+	}//ç›®æ¨™æ•°å€¤å–å¾—
 	bool GetFlag()const {
 		return flag;
-	}//ƒtƒ‰ƒO‚Ìæ“¾
+	}//ãƒ•ãƒ©ã‚°ã®å–å¾—
 
 	//------------------------
-	//‰¹ŠÖŒW
+	//éŸ³é–¢ä¿‚
 	//------------------------
 	int GetBGM() const {
 		return bgm;
-	}//BGM‚Ìæ“¾
+	}//BGMã®å–å¾—
 	int GetSE() const {
 		return se;
-	}//SE‚Ìæ“¾
+	}//SEã®å–å¾—
 };
