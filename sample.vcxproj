@@ -92,6 +92,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -123,7 +124,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="collision.h" />
     <ClInclude Include="obj.h" />
+    <ClInclude Include="obstacle.h" />
     <ClInclude Include="planePolygon.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="game.h" />
@@ -145,6 +148,8 @@
     <ClInclude Include="titleBG.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="collision.cpp" />
+    <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="planePolygon.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="game.cpp" />
