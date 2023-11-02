@@ -31,6 +31,7 @@ private:
 	//座標処理/2D
 	//-----------------------------------
 	D3DXVECTOR3  pos = { 0.0f,0.0f ,0.0f };			//場所
+	D3DXVECTOR3  oldpos = { 0.0f,0.0f,0.0f };		//過去座標
 	D3DXVECTOR3  size = { 0.0f,0.0f,0.0f };			//大きさ
 	D3DXVECTOR3  vel = { 0.0f,0.0f ,0.0f };			//速度
 	D3DXVECTOR3  rot = { 0.0f,0.0f ,0.0f };			//回転
