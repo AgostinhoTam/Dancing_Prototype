@@ -7,7 +7,7 @@
 #include "obj.h"
 #include "renderer.h"
 #include "obstacle.h"
-
+#include "vector"
 //==================================
 //マクロ定義
 //==================================
@@ -24,8 +24,8 @@
 class Map :public Obj
 {
 private:
-
-	Obstacle* pObstacle[OBSTACLE_MAX];
+	std::vector<Obstacle> obstacles;
+	/*Obstacle* pObstacle[OBSTACLE_MAX];*/
 
 public:
 	Map();
@@ -34,8 +34,11 @@ public:
 	void Draw(void)override;
 
 	//Obstacleの情報を取得
-	Obstacle* GetObstacle(int cnt)const {
-		return pObstacle[cnt];
+	const std::vector<Obstacle>& GetObstacles() const {
+		return obstacles;
 	}
+	//Obstacle* GetObstacle(int cnt)const {
+	//	return pObstacle[cnt];
+	//}
 
 };

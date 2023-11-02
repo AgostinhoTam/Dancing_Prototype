@@ -8,7 +8,7 @@
 #include "obj.h"
 #include "obstacle.h"
 #include "map.h"
-
+#include <vector>
 //==================================
 //É}ÉNÉçíËã`
 //==================================
@@ -22,15 +22,15 @@
 class Player :public Obj
 {
 private:
-	Obstacle* pObstacle[OBSTACLE_MAX];
+	std::vector<Obstacle> obstacles;
 public:
 	Player();
 	~Player();
 	void Update(void)override;
 	void Draw(void)override;
 
-	void SetObstacle(Obstacle *sObstacle,int cnt) {
-			pObstacle[cnt] = sObstacle;
+	void SetObstacles(const std::vector<Obstacle>& pObstacles) {
+		obstacles = pObstacles;
 	}
 };
 

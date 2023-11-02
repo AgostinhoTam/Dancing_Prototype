@@ -26,11 +26,11 @@ DefenseObj::~DefenseObj()
 void DefenseObj::Update(void)
 {
 
-		if (CollisionBB(GetPlayerPos(), GetPlayerSize(), GetPlayerScl(), m_defenseobj->GetPos(), m_defenseobj->GetSize(), m_defenseobj->GetScl()))
+		if (CollisionBB(GetPos(), GetSize(), GetScl(), m_defenseobj->GetPos(), m_defenseobj->GetSize(), m_defenseobj->GetScl()))
 		{
 			m_defenseobj->SetFlag(true);
 		}
-		else if (!CollisionBB(GetPlayerPos(), GetPlayerSize(), GetPlayerScl(), m_defenseobj->GetPos(), m_defenseobj->GetSize(), m_defenseobj->GetScl()))
+		else if (!CollisionBB(GetPos(), GetSize(), GetScl(), m_defenseobj->GetPos(), m_defenseobj->GetSize(), m_defenseobj->GetScl()))
 		{
 			m_defenseobj->SetFlag(false);
 		}
@@ -38,17 +38,17 @@ void DefenseObj::Update(void)
 		//“–‚½‚Á‚Ä‚¢‚é
 		if (m_defenseobj->GetFlag())
 		{
-			SetPlayerPosY(GetPlayerPosY() + 500.0f);
+			SetPosY(GetPosY() + 500.0f);
 		}
 		//’n–Ê‚É‚Â‚¢‚Ä‚¢‚é
-		else if (GetPlayerPosY() <= 0.0f)
+		else if (GetPosY() <= 0.0f)
 		{
-			SetPlayerPosY(0.1f);
+			SetPosY(0.1f);
 		}
 		//“–‚½‚Á‚Ä‚¢‚È‚¢‚Æ‚«
 		else if (!m_defenseobj->GetFlag())
 		{
-			SetPlayerVelY(-10.0f);
+			SetVelY(-10.0f);
 		}
 
 
@@ -57,7 +57,7 @@ void DefenseObj::Update(void)
 void DefenseObj::Draw(void)
 {
 	// ƒ|ƒŠƒSƒ“‚Ì•`‰æˆ—
-	DrawPlayerPolygon(model, GetPlayerPos(), GetPlayerSize(), GetPlayerRot(),GetPlayerScl(), GetMtxWorld());
+	DrawPlayerPolygon(model, GetPos(), GetSize(), GetRot(),GetScl(), GetMtxWorld());
 	//DrawPolygon(model, D3DXVECTOR3(-100.0f, 0.0f, 0.0f), GetSize(), GetRot(), D3DXVECTOR3(10.0f, 10.0f, 10.0f), GetMtxWorld());
 
 }

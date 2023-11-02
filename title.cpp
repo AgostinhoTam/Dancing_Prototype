@@ -31,10 +31,7 @@ Title::Title()
 	SetScl(D3DXVECTOR3(4.0f, 1.0f, 1.0f));
 	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 
-	for (int i = 0; i < OBSTACLE_MAX; i++)
-	{
-		pPlayer->SetObstacle(pMap->GetObstacle(i), i);
-	}
+	pPlayer->SetObstacles(pMap->GetObstacles());
 	//SetSound(LoadSound((char*)"data/SOUND/BGM/BGM_Title.wav"));
 	//SetVolume(GetSound(), 0.5f);//1.0が100％
 	//PlaySound(GetSound(), 0);//後ろの数字で回数を決める、０以下になると無限ループになる
@@ -62,9 +59,9 @@ void Title::Update()
 	pPlayer->Update();
 	pMap->Update();
 
-	pMap->SetPlayerPos(pPlayer->GetPlayerPos());
-	pMap->SetPlayerSize(pPlayer->GetPlayerSize());
-	pMap->SetPlayerScl(pPlayer->GetPlayerScl());
+	pMap->SetPos(pPlayer->GetPos());
+	pMap->SetSize(pPlayer->GetSize());
+	pMap->SetScl(pPlayer->GetScl());
 
 	if (GetKeyboardTrigger(DIK_RETURN))
 	{
@@ -79,7 +76,7 @@ void Title::Update()
 void Title::Draw(void)
 {
 	pTitleBG->Draw();
-  pPlayer->Draw();
+    pPlayer->Draw();
 	pMap->Draw();
 
 
