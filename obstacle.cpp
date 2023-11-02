@@ -9,6 +9,7 @@
 #include "collision.h"
 
 
+
 //Obstacle::Obstacle()
 //{
 //	SetTexture(LoadTexture((char*)"data/TEXTURE/field000.jpg"));

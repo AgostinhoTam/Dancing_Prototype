@@ -8,10 +8,10 @@
 Map::Map()
 {
 	
-	for(int i =0;i< 3;i++){
-		obstacles.push_back(Obstacle(D3DXVECTOR3(40.0f * i + 100.0f, 0.0f, 40.0f * i),
-			D3DXVECTOR3(10.0f, 100.0f, 100.0f),
-			D3DXVECTOR3(1.0f, 5.0f, 1.0f),
+	for(int i =0;i<50;i++){
+		obstacles.push_back(Obstacle(D3DXVECTOR3(40.0f * i + 100.0f, 0.0f, 40.0f),
+			D3DXVECTOR3(100.0f, 100.0f, 100.0f),
+			D3DXVECTOR3(2.0f, 2.0f, 2.0f),
 			D3DXVECTOR3(0.0f, 0.0f, 0.0f)));
 	}
 
@@ -34,12 +34,12 @@ Map::~Map()
 
 void Map::Update(void)
 {
-	for (auto& obstacle : obstacles) {
-		obstacle.Update();
-		obstacle.SetPos(GetPos());
-		obstacle.SetSize(GetSize());
-		obstacle.SetScl(GetScl());
-	}
+	//for (auto& obstacle : obstacles) {
+	//	obstacle.Update();
+	//	obstacle.SetPos(GetPos());
+	//	obstacle.SetSize(GetSize());
+	//	obstacle.SetScl(GetScl());
+	//}
 	//for (int i = 0; i < OBSTACLE_MAX; i++)
 	//{
 	//	pObstacle[i]->Update();
