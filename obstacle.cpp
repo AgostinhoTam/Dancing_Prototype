@@ -5,7 +5,7 @@
 #include "obstacle.h"
 #include "Texture.h"
 #include "planePolygon.h"
-
+#include "polygon.h"
 #include "collision.h"
 
 
@@ -17,7 +17,7 @@
 
 Obstacle::~Obstacle()
 {
-
+	
 }
 
 void Obstacle::Update(void)
@@ -28,4 +28,10 @@ void Obstacle::Update(void)
 void Obstacle::Draw(void)
 {
 	DrawPlanePolygon(GetTexture(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(), GetV(), GetUW(), GetVH());
+	
+}
+
+void Obstacle::DrawMap(void)
+{
+	DrawPolygon(GetModel(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld());
 }

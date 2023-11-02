@@ -74,6 +74,7 @@ protected:
 public:
 	Obj(){}
 	Obj(D3DXVECTOR3 rpos, D3DXVECTOR3 rsize, D3DXVECTOR3 rscl, D3DXVECTOR3 rrot):pos(rpos),size(rsize),scl(rscl),rot(rrot){}
+	Obj(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rsize, D3DXVECTOR3 rscl, D3DXVECTOR3 rrot) :model(rmodel),pos(rpos), size(rsize), scl(rscl), rot(rrot) {}
 	virtual void Update(void) = 0;
 	virtual void Draw(void) = 0;
 	//--------------------------------------------
@@ -165,9 +166,9 @@ public:
 	//アニメーション用/画像
 	//-----------------------------------
 
-	//void SetModel(DX11_MODEL sModel) {
-	//	model = sModel;
-	//}//モデルのセット
+	void SetModel(DX11_MODEL sModel) {
+		model = sModel;
+	}//モデルのセット
 	void SetTexture(int sTex) {
 		texture = sTex;
 	}//テクスチャのセット
@@ -313,9 +314,9 @@ public:
 	//アニメーション用/画像
 	//-----------------------------------
 
-	//DX11_MODEL GetModel()const {
-	//	return model;
-	//}//モデルの取得
+	DX11_MODEL GetModel()const {
+		return model;
+	}//モデルの取得
 	int GetTexture() const {
 		return texture;
 	}//テクスチャの取得

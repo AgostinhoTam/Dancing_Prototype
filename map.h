@@ -21,6 +21,7 @@ class Map :public Obj
 {
 private:
 	std::vector<Obstacle> obstacles;
+	std::vector<Obstacle> mapobstacles;
 	/*Obstacle* pObstacle[OBSTACLE_MAX];*/
 
 public:
@@ -32,6 +33,9 @@ public:
 	//Obstacleの情報を取得
 	const std::vector<Obstacle>& GetObstacles() const {
 		return obstacles;
+	}
+	const std::vector<Obstacle>& GetMapObstacles()const {
+		return mapobstacles;
 	}
 	//Obstacle* GetObstacle(int cnt)const {
 	//	return pObstacle[cnt];
