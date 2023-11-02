@@ -7,13 +7,21 @@
 
 Map::Map()
 {
-	
-	for(int i =0;i<50;i++){
-		obstacles.push_back(Obstacle(D3DXVECTOR3(40.0f * i + 100.0f, 0.0f, 40.0f),
-			D3DXVECTOR3(100.0f, 100.0f, 100.0f),
-			D3DXVECTOR3(2.0f, 2.0f, 2.0f),
+	//前面障害
+	for(int i =0;i<OBSTACLE_MAX;i++){
+		obstacles.push_back(Obstacle(D3DXVECTOR3(40.0f * i -(OBSTACLE_MAX*0.5*40), 0.0f, 100.0f),
+			D3DXVECTOR3(10.0f, 100.0f, 100.0f),
+			D3DXVECTOR3(1.0f, 5.0f, 1.0f),
 			D3DXVECTOR3(0.0f, 0.0f, 0.0f)));
 	}
+	//後ろ障害
+	for (int i = 0; i < OBSTACLE_MAX; i++) {
+		obstacles.push_back(Obstacle(D3DXVECTOR3(40.0f * i - (OBSTACLE_MAX * 0.5 * 40), 0.0f, -600.0f),
+			D3DXVECTOR3(10.0f, 100.0f, 100.0f),
+			D3DXVECTOR3(1.0f, 5.0f, 1.0f),
+			D3DXVECTOR3(0.0f, 0.0f, 0.0f)));
+	}
+
 
 		//pObstacle[i]->SetPos(D3DXVECTOR3(40.0f*i +100.0f, 0.0f, 40.0f*i));
 		//pObstacle[i]->SetSize(D3DXVECTOR3(10.0f, 100.0f, 100.0f));

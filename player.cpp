@@ -19,6 +19,7 @@ Player::Player()
 
 Player::~Player()
 {
+	obstacles.clear();
 	UnloadModel(&model);
 }
 
