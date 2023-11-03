@@ -10,7 +10,7 @@
 
 Player::Player()
 {
-	LoadModel((char*)"data/MODEL/miku_01.obj", &model);
+	LoadModel((char*)"data/MODEL/E38.obj", &model);
 	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetSize(D3DXVECTOR3(10.0f, 1.0f, 1.0f));
 	SetScl(D3DXVECTOR3(8.0f, 8.0f, 8.0f));

@@ -45,3 +45,4 @@ struct DX11_MODEL
 void LoadModel( char *FileName, DX11_MODEL *Model );
 void UnloadModel( DX11_MODEL *Model );
 void DrawModel( DX11_MODEL *Model );
+void LoadObjBlender(char* FileName, DX11_MODEL* Model);

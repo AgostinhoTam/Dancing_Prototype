@@ -23,13 +23,12 @@ Map::Map()
 			D3DXVECTOR3(0.0f, 0.0f, 0.0f)));
 	}
 	
-	LoadModel((char*)"data/MODEL/dancing.obj", &temp);
+	LoadModel((char*)"data/MODEL/dancing_color_03.obj", &temp);
 	mapobstacles.push_back(Obstacle(temp, 
-		D3DXVECTOR3(0.0f, -1000.0f, 0.0f),
-		D3DXVECTOR3(1.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(0.0f, -500.0f, 0.0f),
+		D3DXVECTOR3(10.0f, 10.0f, 10.0f),
 		D3DXVECTOR3(1.0f, 1.0f, 1.0f),
 		D3DXVECTOR3(0.0f, D3DX_PI, 0.0f)));
-	
 
 		//pObstacle[i]->SetPos(D3DXVECTOR3(40.0f*i +100.0f, 0.0f, 40.0f*i));
 		//pObstacle[i]->SetSize(D3DXVECTOR3(10.0f, 100.0f, 100.0f));
@@ -42,6 +41,7 @@ Map::Map()
 Map::~Map()
 {
 	obstacles.clear();
+	mapobstacles.clear();
 	//for (int i = 0; i < OBSTACLE_MAX; i++)
 	//{
 	//	delete pObstacle[i];
