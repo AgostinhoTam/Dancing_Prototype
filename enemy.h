@@ -23,16 +23,14 @@ class Enemy :public Obj
 {
 	const int ENEMY_MAX_NUM = 200;
 	const float NORMAL_ENEMY_SPEED = 0.5f;
-	std::vector<Enemy> Enemies;
-	Map* m_map;
+	Map* m_map= nullptr;
 public:
 	Enemy();
-	Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale) :Obj(rmodel,rpos,rvel,rsize,rscale,rrot){}
+	Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap) :Obj(rmodel,rpos,rvel,rsize,rscale,rrot),m_map(&rmap){}
 	~Enemy();
 	void Update(void)override;
 	void Draw(void)override;
-	void AddEnemy(int number);
-	void CollisionCheck(std::vector<Enemy>& renemies, Map* rmap);
+	void CollisionCheck(Map* rmap);
 };
 
 

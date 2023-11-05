@@ -21,13 +21,18 @@ private:
 	Obj* pTitleBG=nullptr;
 	Player* pPlayer=nullptr;
 	Map* pMap=nullptr;
-	Enemy* pEnemy=nullptr;
-
+	std::vector<Enemy*> Enemies;
+	int m_frame = 0;
 public:
 	Title();
 	~Title();
 	void Update(void)override;
 	void Draw(void)override;
+	void GenerateEnemy();
+	void GenerateEnemy(int index);
+	int GetFrame() { return m_frame; }
+	void FrameAdd() { m_frame++; }
+	void SetFrameZero() { m_frame = 0; }
 	Map& GetMap() { return *pMap; }
 };
 

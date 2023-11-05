@@ -26,7 +26,7 @@ Title::Title()
 	pTitleBG =new TitleBG();
 	pMap = new Map();
 	pPlayer = new Player(pMap);
-	//pEnemy = new Enemy();
+	GenerateEnemy();
 	SetTexture(LoadTexture((char*)"data/TEXTURE/field000.jpg"));
 	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetSize(D3DXVECTOR3(100.0f, 100.0f, 100.0f));
@@ -46,6 +46,10 @@ Title::~Title()
 	delete pTitleBG;
 	delete pPlayer;
 	delete pMap;
+	for(auto* enemy:Enemies){
+		delete enemy;
+	}
+	Enemies.clear();
 	//delete pEnemy;
 	UnloadModel(&model);
 }
@@ -55,11 +59,19 @@ Title::~Title()
 //=============================================================================
 void Title::Update()
 {	
+	FrameAdd();
 
 	pTitleBG->Update();
 	pPlayer->Update();
 	pMap->Update();
-	//pEnemy->Update();
+	if (GetFrame() == 60 && Enemies.capacity() < 200) {
+		int random = rand() % 2000 -1000;
+		GenerateEnemy(random);
+		SetFrameZero();
+	}
+	for (auto* enemy : Enemies) {
+		enemy->Update();
+	}
 	pMap->SetPos(pPlayer->GetPos());
 	pMap->SetSize(pPlayer->GetSize());
 	pMap->SetScl(pPlayer->GetScl());
@@ -79,6 +91,9 @@ void Title::Draw(void)
 	pTitleBG->Draw();
     pPlayer->Draw();
 	pMap->Draw();
+	for (auto* enemy : Enemies) {
+		enemy->Draw();
+	}
 	//pEnemy->Draw();
 
 	////描画処理
@@ -91,4 +106,28 @@ void Title::Draw(void)
 
 	//2Dポリゴンの描画
 	//DrawPlanePolygon();
+}
+
+void Title::GenerateEnemy()
+{
+	DX11_MODEL enemytemp;
+	LoadModel((char*)"data/MODEL/miku_01.obj", &enemytemp);
+	Enemies.push_back(new Enemy(enemytemp,
+		D3DXVECTOR3(400.0f, 200.0f, 0.0f),						//pos
+		D3DXVECTOR3(0.0f, 0.0f, 0.0f),						//vel
+		D3DXVECTOR3(1.0f, 1.0f, 1.0f),						//size
+		D3DXVECTOR3(0.0f, 0.0f, 0.0f),						//rot
+		D3DXVECTOR3(15.0f, 15.0f, 15.0f),GetMap()));					//scl
+}
+
+void Title::GenerateEnemy(int index)
+{
+	DX11_MODEL enemytemp;
+	LoadModel((char*)"data/MODEL/miku_01.obj", &enemytemp);
+	Enemies.push_back(new Enemy(enemytemp,
+		D3DXVECTOR3(index, 200.0f, 0.0f),						//pos
+		D3DXVECTOR3(0.0f, 0.0f, 0.0f),						//vel
+		D3DXVECTOR3(1.0f, 1.0f, 1.0f),						//size
+		D3DXVECTOR3(0.0f, 0.0f, 0.0f),						//rot
+		D3DXVECTOR3(15.0f, 15.0f, 15.0f), GetMap()));					//scl
 }
