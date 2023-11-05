@@ -13,6 +13,7 @@
 #include "Texture.h"
 #include "player.h"
 #include "map.h"
+#include "enemy.h"
 #include "collision.h"
 
 
@@ -23,15 +24,15 @@
 Title::Title()
 {
 	pTitleBG =new TitleBG();
-	pPlayer = new Player();
 	pMap = new Map();
+	pPlayer = new Player(pMap);
+	//pEnemy = new Enemy();
 	SetTexture(LoadTexture((char*)"data/TEXTURE/field000.jpg"));
 	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetSize(D3DXVECTOR3(100.0f, 100.0f, 100.0f));
 	SetScl(D3DXVECTOR3(4.0f, 1.0f, 1.0f));
 	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 
-	pPlayer->SetObstacles(pMap->GetObstacles());
 	//SetSound(LoadSound((char*)"data/SOUND/BGM/BGM_Title.wav"));
 	//SetVolume(GetSound(), 0.5f);//1.0が100％
 	//PlaySound(GetSound(), 0);//後ろの数字で回数を決める、０以下になると無限ループになる
@@ -45,7 +46,7 @@ Title::~Title()
 	delete pTitleBG;
 	delete pPlayer;
 	delete pMap;
-
+	//delete pEnemy;
 	UnloadModel(&model);
 }
 
@@ -58,11 +59,11 @@ void Title::Update()
 	pTitleBG->Update();
 	pPlayer->Update();
 	pMap->Update();
-
+	//pEnemy->Update();
 	pMap->SetPos(pPlayer->GetPos());
 	pMap->SetSize(pPlayer->GetSize());
 	pMap->SetScl(pPlayer->GetScl());
-
+	
 	if (GetKeyboardTrigger(DIK_RETURN))
 	{
 		//StopSound(GetSound());
@@ -78,7 +79,7 @@ void Title::Draw(void)
 	pTitleBG->Draw();
     pPlayer->Draw();
 	pMap->Draw();
-
+	//pEnemy->Draw();
 
 	////描画処理
 	//DrawPlanePolygon(GetTexture(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(),GetV(),GetUW(),GetVH());

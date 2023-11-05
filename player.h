@@ -22,16 +22,12 @@
 class Player :public Obj
 {
 private:
-	std::vector<Obstacle> obstacles;
+	Map* m_Map;
 public:
-	Player();
+	Player(Map* map);
 	~Player();
 	void Update(void)override;
 	void Draw(void)override;
-
-	void SetObstacles(const std::vector<Obstacle>& pObstacles) {
-		obstacles = pObstacles;
-	}
 };
 
 

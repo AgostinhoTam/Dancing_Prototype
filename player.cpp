@@ -8,28 +8,28 @@
 #include "camera.h"
 #include "collision.h"
 
-Player::Player()
+Player::Player(Map* map)
 {
-	LoadModel((char*)"data/MODEL/miku_01.obj", &model);
+	m_Map = map;
+	LoadModel((char*)"data/MODEL/moxrigvamp02.obj", &model);
 	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-	SetSize(D3DXVECTOR3(10.0f, 1.0f, 1.0f));
-	SetScl(D3DXVECTOR3(8.0f, 8.0f, 8.0f));
+	SetSize(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
+	SetScl(D3DXVECTOR3(0.2f, 0.2f, 0.2f));
 	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 }
 
 Player::~Player()
 {
-	obstacles.clear();
 	UnloadModel(&model);
 }
 
 void Player::Update(void)
 {
-
+	
 	//速度を足していくプレイヤーの座標移動
 	SetPos(GetPos() + GetVel());
 
-	for (auto& obstacle:obstacles)
+	for (auto obstacle: m_Map->GetObstacles())
 	{
 		if (CollisionBB(GetPos(), GetSize(), GetScl(), obstacle.GetPos(), obstacle.GetSize(), obstacle.GetScl()))
 		{

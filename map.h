@@ -11,7 +11,7 @@
 //==================================
 //マクロ定義
 //==================================
-#define OBSTACLE_MAX	(30)	//障害物の上限数
+#define OBSTACLE_MAX	(1)	//障害物の上限数
 
 
 ///==================================
@@ -31,10 +31,10 @@ public:
 	void Draw(void)override;
 
 	//Obstacleの情報を取得
-	const std::vector<Obstacle>& GetObstacles() const {
+	std::vector<Obstacle>& GetObstacles(){
 		return obstacles;
 	}
-	const std::vector<Obstacle>& GetMapObstacles()const {
+	std::vector<Obstacle>& GetMapObstacles(){
 		return mapobstacles;
 	}
 	//Obstacle* GetObstacle(int cnt)const {

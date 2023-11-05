@@ -25,7 +25,7 @@ Map::Map()
 	
 	LoadModel((char*)"data/MODEL/dancing_color_03.obj", &temp);
 	mapobstacles.push_back(Obstacle(temp, 
-		D3DXVECTOR3(0.0f, -500.0f, 0.0f),
+		D3DXVECTOR3(-2450.0f, -500.0f, 0.0f),
 		D3DXVECTOR3(10.0f, 10.0f, 10.0f),
 		D3DXVECTOR3(1.0f, 1.0f, 1.0f),
 		D3DXVECTOR3(0.0f, D3DX_PI, 0.0f)));

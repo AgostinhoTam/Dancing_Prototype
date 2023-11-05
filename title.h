@@ -11,21 +11,24 @@
 #include "player.h"
 #include "map.h"
 #include "obstacle.h"
-
+#include "enemy.h"
 //==================================
 //ÉNÉâÉXêÈåæ
 //==================================
 class Title :public Obj
 {
 private:
-	Obj* pTitleBG;
-	Player* pPlayer;
-	Map* pMap;
+	Obj* pTitleBG=nullptr;
+	Player* pPlayer=nullptr;
+	Map* pMap=nullptr;
+	Enemy* pEnemy=nullptr;
+
 public:
 	Title();
 	~Title();
 	void Update(void)override;
 	void Draw(void)override;
+	Map& GetMap() { return *pMap; }
 };
 
 

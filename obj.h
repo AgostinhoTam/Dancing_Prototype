@@ -73,8 +73,9 @@ protected:
 
 public:
 	Obj(){}
-	Obj(D3DXVECTOR3 rpos, D3DXVECTOR3 rsize, D3DXVECTOR3 rscl, D3DXVECTOR3 rrot):pos(rpos),size(rsize),scl(rscl),rot(rrot){}
-	Obj(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rsize, D3DXVECTOR3 rscl, D3DXVECTOR3 rrot) :model(rmodel),pos(rpos), size(rsize), scl(rscl), rot(rrot) {}
+	Obj(D3DXVECTOR3 rpos, D3DXVECTOR3 rsize, D3DXVECTOR3 rscl, D3DXVECTOR3 rrot):pos(rpos),size(rsize),scl(rscl),rot(rrot){}	//player
+	Obj(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rsize, D3DXVECTOR3 rscl, D3DXVECTOR3 rrot) :model(rmodel),pos(rpos), size(rsize), scl(rscl), rot(rrot) {} //3D model
+	Obj(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rscl, D3DXVECTOR3 rrot) :model(rmodel), pos(rpos), vel(rvel),size(rsize), scl(rscl), rot(rrot) {} //enemy
 	virtual void Update(void) = 0;
 	virtual void Draw(void) = 0;
 	//--------------------------------------------

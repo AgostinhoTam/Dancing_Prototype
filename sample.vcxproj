@@ -126,6 +126,7 @@
   <ItemGroup>
     <ClInclude Include="collision.h" />
     <ClInclude Include="defenseobj.h" />
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="obj.h" />
     <ClInclude Include="obstacle.h" />
     <ClInclude Include="planePolygon.h" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="defenseobj.cpp" />
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="planePolygon.cpp" />
     <ClCompile Include="camera.cpp" />
