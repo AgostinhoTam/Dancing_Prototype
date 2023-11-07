@@ -35,6 +35,9 @@ struct DX11_MODEL
 
 	DX11_SUBSET		*SubsetArray;
 	unsigned short	SubsetNum;
+
+	D3DXVECTOR3		m_MinVertex = { FLT_MAX,FLT_MAX,FLT_MAX };
+	D3DXVECTOR3		m_MaxVertex = { -FLT_MAX,-FLT_MAX,-FLT_MAX };
 };
 
 

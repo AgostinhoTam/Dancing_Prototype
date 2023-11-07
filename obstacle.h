@@ -13,7 +13,7 @@
 class Obstacle :public Obj
 {
 public:
-	Obstacle(D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXVECTOR3 scale, D3DXVECTOR3 rot) :Obj(pos, size, scale, rot) {}
+	Obstacle(D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXVECTOR3 scale, D3DXVECTOR3 rot) :Obj(pos, size, scale, rot) { SetTexture(LoadTexture((char*)"data/TEXTURE/field000.jpg")); }
 	Obstacle(DX11_MODEL model, D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXVECTOR3 scale, D3DXVECTOR3 rot) :Obj(model,pos, size, scale, rot) {}
 	~Obstacle();
 	void Update(void)override;

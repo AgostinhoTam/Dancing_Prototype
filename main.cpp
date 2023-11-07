@@ -12,6 +12,7 @@
 #include "texture.h"
 #include "obj.h"
 #include "title.h"
+#include "sound.h"
 #include "game.h"
 #include "planePolygon.h"
 
@@ -215,6 +216,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 //=============================================================================
 HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 {
+	InitSound(hWnd);
+	
 	InitRenderer(hInstance, hWnd, bWindow);
 
 	InitCamera();
@@ -253,7 +256,7 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 //=============================================================================
 void Uninit(void)
 {
-
+	UninitSound();
 	//2DÉ|ÉäÉSÉìÇÃèIóπèàóù
 	UninitPlanePolygon();
 

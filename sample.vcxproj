@@ -77,6 +77,10 @@
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -117,6 +121,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -124,7 +129,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="attackarea.h" />
+    <ClInclude Include="attackobj.h" />
     <ClInclude Include="collision.h" />
+    <ClInclude Include="collsionpoly.h" />
     <ClInclude Include="defenseobj.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="obj.h" />
@@ -150,7 +158,9 @@
     <ClInclude Include="titleBG.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="attackarea.cpp" />
     <ClCompile Include="collision.cpp" />
+    <ClCompile Include="collsionpoly.cpp" />
     <ClCompile Include="defenseobj.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="obstacle.cpp" />

@@ -1,13 +1,14 @@
 //===============================================
-//ゲーム制御[player.h]
-//Date:2023/10/27	Auther:林祐也
+//プレイヤー制御[player.h]
+//Date:2023/11/08	Auther:譚偉進
 //===============================================
 #pragma once
 
 
 #include "obj.h"
-#include "obstacle.h"
 #include "map.h"
+#include "attackobj.h"
+#include "enemy.h"
 #include <vector>
 //==================================
 //マクロ定義
@@ -22,9 +23,13 @@
 class Player :public Obj
 {
 private:
-	Map* m_Map;
+	const float ATTACK_DMG = 1.0f;
+	Map* m_Map = nullptr;
+	std::vector<Enemy*> m_enemies;
+	AttackObj m_attackobj;
+	D3DXVECTOR3 m_colpoly = {};
 public:
-	Player(Map* map);
+	Player(Map* map, std::vector<Enemy*>& enemies);
 	~Player();
 	void Update(void)override;
 	void Draw(void)override;

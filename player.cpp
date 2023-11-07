@@ -1,16 +1,18 @@
 //===============================================
-//タイトル制御[player.cpp]
-//Date:2023/10/29	Auther:林祐也
+//プレイヤー制御[player.cpp]
+//Date:2023/11/08	Auther:譚偉進
 //===============================================
 #include "player.h"
-#include "input.h"
-#include "polygon.h"
-#include "camera.h"
+#include "model.h"
 #include "collision.h"
+#include "input.h"
 
-Player::Player(Map* map)
+#include "polygon.h"
+Player::Player(Map* map, std::vector<Enemy*>& enemies):
+	m_Map(map), 
+	m_enemies(enemies), 
+	m_attackobj(ATTACK_DMG) 
 {
-	m_Map = map;
 	LoadModel((char*)"data/MODEL/moxrigvamp02.obj", &model);
 	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetSize(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
@@ -25,7 +27,6 @@ Player::~Player()
 
 void Player::Update(void)
 {
-	
 	//速度を足していくプレイヤーの座標移動
 	SetPos(GetPos() + GetVel());
 
@@ -56,7 +57,8 @@ void Player::Update(void)
 			SetVelY(-10.0f);
 		}
 	}
-
+	
+	
 	//前
 	if (GetKeyboardPress(DIK_W))
 	{

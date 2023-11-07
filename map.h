@@ -3,11 +3,10 @@
 //Date:2023/10/27	Auther:林祐也
 //===============================================
 #pragma once
-
-#include "obj.h"
-#include "renderer.h"
+#ifndef _MAP_H
+#define _MAP_H
+#include <vector>
 #include "obstacle.h"
-#include "vector"
 //==================================
 //マクロ定義
 //==================================
@@ -21,7 +20,7 @@ class Map :public Obj
 {
 private:
 	std::vector<Obstacle> obstacles;
-	std::vector<Obstacle> mapobstacles;
+	//std::vector<Obstacle> mapobstacles;
 	/*Obstacle* pObstacle[OBSTACLE_MAX];*/
 
 public:
@@ -34,11 +33,7 @@ public:
 	std::vector<Obstacle>& GetObstacles(){
 		return obstacles;
 	}
-	std::vector<Obstacle>& GetMapObstacles(){
-		return mapobstacles;
-	}
-	//Obstacle* GetObstacle(int cnt)const {
-	//	return pObstacle[cnt];
-	//}
+
 
 };
+#endif // !_MAP_H

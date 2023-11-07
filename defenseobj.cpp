@@ -3,19 +3,15 @@
 //Date:2023/10/29	Auther:—Ñ—S–ç
 //===============================================
 #include "defenseobj.h"
-#include "player.h"
-#include "input.h"
 #include "polygon.h"
-#include "camera.h"
-#include "collision.h"
 
 DefenseObj::DefenseObj()
 {
-	LoadModel((char*)"data/MODEL/dancing.obj", &model);
-	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-	SetSize(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
-	SetScl(D3DXVECTOR3(0.2f, 0.2f, 0.2f));
-	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	LoadModel((char*)"data/MODEL/dancing_color_03.obj", &model);
+	SetPos(D3DXVECTOR3(-2300.0f, -500.0f, 0.0f));
+	SetSize(D3DXVECTOR3(10.0f, 10.0f, 10.0f));
+	SetScl(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
+	SetRot(D3DXVECTOR3(0.0f, D3DX_PI, 0.0f));
 }
 
 DefenseObj::~DefenseObj()
@@ -26,38 +22,12 @@ DefenseObj::~DefenseObj()
 void DefenseObj::Update(void)
 {
 
-		if (CollisionBB(GetPos(), GetSize(), GetScl(), m_defenseobj->GetPos(), m_defenseobj->GetSize(), m_defenseobj->GetScl()))
-		{
-			m_defenseobj->SetFlag(true);
-		}
-		else if (!CollisionBB(GetPos(), GetSize(), GetScl(), m_defenseobj->GetPos(), m_defenseobj->GetSize(), m_defenseobj->GetScl()))
-		{
-			m_defenseobj->SetFlag(false);
-		}
-
-		//“–‚½‚Á‚Ä‚¢‚é
-		if (m_defenseobj->GetFlag())
-		{
-			SetPosY(GetPosY() + 500.0f);
-		}
-		//’n–Ê‚É‚Â‚¢‚Ä‚¢‚é
-		else if (GetPosY() <= 0.0f)
-		{
-			SetPosY(0.1f);
-		}
-		//“–‚½‚Á‚Ä‚¢‚È‚¢‚Æ‚«
-		else if (!m_defenseobj->GetFlag())
-		{
-			SetVelY(-10.0f);
-		}
-
-
 }
 
 void DefenseObj::Draw(void)
 {
 	// ƒ|ƒŠƒSƒ“‚Ì•`‰æˆ—
-	DrawPlayerPolygon(model, GetPos(), GetSize(), GetRot(),GetScl(), GetMtxWorld());
+	DrawPolygon(model, GetPos(), GetSize(), GetRot(),GetScl(), GetMtxWorld());
 	//DrawPolygon(model, D3DXVECTOR3(-100.0f, 0.0f, 0.0f), GetSize(), GetRot(), D3DXVECTOR3(10.0f, 10.0f, 10.0f), GetMtxWorld());
 
 }

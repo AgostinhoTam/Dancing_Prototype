@@ -3,24 +3,21 @@
 //Date:2023/07/10	Auther:ó—óSñÁ
 //===============================================
 #pragma once
-
-
-#include "obj.h"
-#include "renderer.h"
-#include "titleBG.h"
 #include "player.h"
 #include "map.h"
-#include "obstacle.h"
+#include "defenseobj.h"
 #include "enemy.h"
+
 //==================================
 //ÉNÉâÉXêÈåæ
 //==================================
 class Title :public Obj
 {
 private:
-	Obj* pTitleBG=nullptr;
-	Player* pPlayer=nullptr;
-	Map* pMap=nullptr;
+	Obj* pTitleBG = nullptr;
+	Player* pPlayer = nullptr;
+	Map* pMap = nullptr;
+	DefenseObj* pDefObj = nullptr;
 	std::vector<Enemy*> Enemies;
 	int m_frame = 0;
 public:
@@ -29,11 +26,13 @@ public:
 	void Update(void)override;
 	void Draw(void)override;
 	void GenerateEnemy();
-	void GenerateEnemy(int index);
+	void GenerateEnemy(float x, float z);
 	int GetFrame() { return m_frame; }
 	void FrameAdd() { m_frame++; }
 	void SetFrameZero() { m_frame = 0; }
 	Map& GetMap() { return *pMap; }
+	std::vector<Enemy*>& GetEnemy() { return Enemies; }
+	DefenseObj& GetDefObj() { return *pDefObj; }
 };
 
 

@@ -232,7 +232,7 @@ public:
 	//-----------------------------------
 	//座標処理/2D
 	//-----------------------------------
-	D3DXVECTOR3 GetPos() const {
+	D3DXVECTOR3 GetPos()const {
 		return pos;
 	}//X,Y座標の取得
 	float GetPosX()const {

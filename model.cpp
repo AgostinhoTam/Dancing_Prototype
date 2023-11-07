@@ -50,6 +50,8 @@ struct MODEL
 	unsigned short	IndexNum;
 	SUBSET			*SubsetArray;
 	unsigned short	SubsetNum;
+	D3DXVECTOR3		m_MinVertex = { FLT_MAX,FLT_MAX,FLT_MAX };
+	D3DXVECTOR3		m_MaxVertex = { -FLT_MAX,-FLT_MAX,-FLT_MAX };
 };
 
 
@@ -325,6 +327,13 @@ void LoadObj( char *FileName, MODEL *Model )
 			position->x *= SCALE_MODEL;
 			position->y *= SCALE_MODEL;
 			position->z *= SCALE_MODEL;
+			D3DXVECTOR3 tempvertex =  Model->m_MinVertex;
+			Model->m_MinVertex.x = min(Model->m_MinVertex.x, position->x);
+			Model->m_MinVertex.y = min(Model->m_MinVertex.y, position->y);
+			Model->m_MinVertex.z = min(Model->m_MinVertex.z, position->z);
+			Model->m_MaxVertex.x = max(Model->m_MinVertex.x, position->x);
+			Model->m_MaxVertex.y = max(Model->m_MinVertex.y, position->y);
+			Model->m_MaxVertex.z = max(Model->m_MinVertex.z, position->z);
 			position++;
 		}
 		else if( strcmp( str, "vn" ) == 0 )

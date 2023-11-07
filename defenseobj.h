@@ -6,8 +6,6 @@
 
 
 #include "obj.h"
-#include "obstacle.h"
-#include "map.h"
 
 //==================================
 //É}ÉNÉçíËã`
@@ -22,16 +20,12 @@
 class DefenseObj :public Obj
 {
 private:
-	Obstacle* m_defenseobj;
 public:
 	DefenseObj();
 	~DefenseObj();
 	void Update(void)override;
 	void Draw(void)override;
 
-	void SetDefenseObj(Obstacle *sObstacle) {
-		m_defenseobj = sObstacle;
-	}
 };
 
 
