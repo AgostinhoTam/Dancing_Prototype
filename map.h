@@ -5,6 +5,7 @@
 #pragma once
 #ifndef _MAP_H
 #define _MAP_H
+#include "obj.h"
 #include <vector>
 #include "obstacle.h"
 //==================================

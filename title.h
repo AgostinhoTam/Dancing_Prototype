@@ -3,11 +3,11 @@
 //Date:2023/07/10	Auther:—Ñ—S–ç
 //===============================================
 #pragma once
+#include "obj.h"
 #include "player.h"
 #include "map.h"
 #include "defenseobj.h"
 #include "enemy.h"
-
 //==================================
 //ƒNƒ‰ƒXéŒ¾
 //==================================

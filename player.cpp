@@ -10,9 +10,9 @@
 #include "polygon.h"
 Player::Player(Map* map, std::vector<Enemy*>& enemies):
 	m_Map(map), 
-	m_enemies(enemies), 
-	m_attackobj(ATTACK_DMG) 
+	m_enemies(enemies)
 {
+	m_attackarea = new CAttackArea();
 	LoadModel((char*)"data/MODEL/moxrigvamp02.obj", &model);
 	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetSize(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
@@ -22,6 +22,7 @@ Player::Player(Map* map, std::vector<Enemy*>& enemies):
 
 Player::~Player()
 {
+	delete m_attackarea;
 	UnloadModel(&model);
 }
 
@@ -29,7 +30,8 @@ void Player::Update(void)
 {
 	//速度を足していくプレイヤーの座標移動
 	SetPos(GetPos() + GetVel());
-
+	m_attackarea->UpdatePos(GetPos());
+	m_attackarea->Update();
 	for (auto obstacle: m_Map->GetObstacles())
 	{
 		if (CollisionBB(GetPos(), GetSize(), GetScl(), obstacle.GetPos(), obstacle.GetSize(), obstacle.GetScl()))
@@ -107,6 +109,8 @@ void Player::Draw(void)
 {
 	// ポリゴンの描画処理
 	DrawPlayerPolygon(model, GetPos(), GetSize(), GetRot(),GetScl(), GetMtxWorld());
+
+	m_attackarea->Draw();
 	//DrawPolygon(model, D3DXVECTOR3(-100.0f, 0.0f, 0.0f), GetSize(), GetRot(), D3DXVECTOR3(10.0f, 10.0f, 10.0f), GetMtxWorld());
 
 }

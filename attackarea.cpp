@@ -7,9 +7,8 @@
 #include "input.h"
 #include "polygon.h"
 
-CAttackArea::CAttackArea(Player* ptr) :m_ptr(ptr) {
+CAttackArea::CAttackArea(){
 	LoadModel((char*)"data/MODEL/torus.obj", &model);
-	SetPos(ptr->GetPos());
 	SetSize(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
 	SetScl(D3DXVECTOR3(0.0f, 1.0f, 0.0f));
 	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
@@ -20,14 +19,19 @@ CAttackArea::~CAttackArea()
 	UnloadModel(&model);
 }
 
+
 void CAttackArea::Update(void)
 {
-	SetPos(m_ptr->GetPos());
 	DecreaseCurRng();
 	if (GetKeyboardTrigger(DIK_SPACE)) {
-		IncreaseCurRng(SPD);
+ 		IncreaseCurRng(SPD);
 	}
 	SetCurRng(m_CurRng);
+}
+
+void CAttackArea::UpdatePos(D3DXVECTOR3 pos)
+{
+	SetPos(pos);
 }
 
 void CAttackArea::Draw(void)
