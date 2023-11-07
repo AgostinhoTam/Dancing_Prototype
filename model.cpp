@@ -1,7 +1,7 @@
 //=============================================================================
 //
 // ƒ‚ƒfƒ‹‚Ìˆ— [model.cpp]
-// Author :
+// Date:2023/11/08	 Author:æˆÌi
 //
 //=============================================================================
 #define _CRT_SECURE_NO_WARNINGS
@@ -51,7 +51,7 @@ struct MODEL
 	SUBSET			*SubsetArray;
 	unsigned short	SubsetNum;
 	D3DXVECTOR3		m_MinVertex = { FLT_MAX,FLT_MAX,FLT_MAX };
-	D3DXVECTOR3		m_MaxVertex;
+	D3DXVECTOR3		m_MaxVertex = { -FLT_MAX,-FLT_MAX,-FLT_MAX };
 };
 
 
@@ -137,6 +137,8 @@ void LoadModel( char *FileName, DX11_MODEL *Model )
 	delete[] model.IndexArray;
 	delete[] model.SubsetArray;
 
+	Model->m_MaxVertex = model.m_MaxVertex;
+	Model->m_MinVertex = model.m_MinVertex;
 
 }
 
@@ -327,13 +329,12 @@ void LoadObj( char *FileName, MODEL *Model )
 			position->x *= SCALE_MODEL;
 			position->y *= SCALE_MODEL;
 			position->z *= SCALE_MODEL;
-			D3DXVECTOR3 tempvertex =  Model->m_MinVertex;
 			Model->m_MinVertex.x = min(Model->m_MinVertex.x, position->x);
 			Model->m_MinVertex.y = min(Model->m_MinVertex.y, position->y);
 			Model->m_MinVertex.z = min(Model->m_MinVertex.z, position->z);
-			Model->m_MaxVertex.x = max(Model->m_MinVertex.x, position->x);
-			Model->m_MaxVertex.y = max(Model->m_MinVertex.y, position->y);
-			Model->m_MaxVertex.z = max(Model->m_MinVertex.z, position->z);
+			Model->m_MaxVertex.x = max(Model->m_MaxVertex.x, position->x);
+			Model->m_MaxVertex.y = max(Model->m_MaxVertex.y, position->y);
+			Model->m_MaxVertex.z = max(Model->m_MaxVertex.z, position->z);
 			position++;
 		}
 		else if( strcmp( str, "vn" ) == 0 )

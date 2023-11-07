@@ -8,6 +8,7 @@
 
 #include "obj.h"
 #include "attackarea.h"
+#include "collsionpoly.h"
 #include "map.h"
 #include "enemy.h"
 #include <vector>
@@ -27,10 +28,11 @@ private:
 	const float ATTACK_DMG = 1.0f;
 	Map* m_Map = nullptr;
 	std::vector<Enemy*> m_enemies;
-	D3DXVECTOR3 m_colpoly = {};
 	CAttackArea* m_attackarea;
+	CollisionPoly* m_colpoly=nullptr;
+	DefenseObj* m_defenseobj = nullptr;
 public:
-	Player(Map* map, std::vector<Enemy*>& enemies);
+	Player(Map* map, std::vector<Enemy*>& enemies, DefenseObj* defenseobj);
 	~Player();
 	void Update(void)override;
 	void Draw(void)override;

@@ -16,8 +16,8 @@ Title::Title()
 {
 	pTitleBG =new TitleBG();
 	pMap = new Map();
-	pPlayer = new Player(pMap,Enemies);
 	pDefObj = new DefenseObj();
+	pPlayer = new Player(pMap,Enemies,pDefObj);
 
 	unsigned int sound = LoadSound((char*)"data/SOUND/BGM/test.wav");
 	SetVolume(sound, 0.5f);//1.0が100％
@@ -50,9 +50,9 @@ void Title::Update()
 {	
 	FrameAdd();
 	pTitleBG->Update();
-	pPlayer->Update();
 	pMap->Update();
 	pDefObj->Update();
+	pPlayer->Update();
 	if (GetFrame() == 60 && Enemies.capacity() < 200) {
 		float randomx = rand() % 2000 -1000;
 		float randomz = rand() % 2000 - 1000;
