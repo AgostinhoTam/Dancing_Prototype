@@ -5,6 +5,7 @@
 #include "collsionpoly.h"
 
 
+
 CollisionPoly::CollisionPoly(D3DXVECTOR3 max, D3DXVECTOR3 min)
 {
 	m_max = max;
@@ -18,6 +19,16 @@ CollisionPoly::CollisionPoly(D3DXVECTOR3 max, D3DXVECTOR3 min)
 	m_ColPolygon[6] = D3DXVECTOR3(max.x, max.y, max.z);
 	m_ColPolygon[7] = D3DXVECTOR3(min.x, max.y, max.z);
 }
+//=============================================================================
+// 自動３Dポリコン設定
+// 座標・サイズ
+//=============================================================================
+//引数
+//object1	: モデル
+//pos1		: ポリコン座標
+//object2	: 比較対象モデル
+//pos2		: 比較対象ポリコン座標
+
 
 bool CollisionPoly::ColPolyBB(DX11_MODEL object1, D3DXVECTOR3 pos1, DX11_MODEL object2, D3DXVECTOR3 pos2)
 {

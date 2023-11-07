@@ -137,6 +137,7 @@ void LoadModel( char *FileName, DX11_MODEL *Model )
 	delete[] model.IndexArray;
 	delete[] model.SubsetArray;
 
+	//obj‘ÎÛ‚Ìmodel‚Ém_MaxVertex‚É“ü‚ê‚é
 	Model->m_MaxVertex = model.m_MaxVertex;
 	Model->m_MinVertex = model.m_MinVertex;
 
@@ -329,6 +330,8 @@ void LoadObj( char *FileName, MODEL *Model )
 			position->x *= SCALE_MODEL;
 			position->y *= SCALE_MODEL;
 			position->z *= SCALE_MODEL;
+
+			//Šg‘åŒã‚ÌÅ‘å’l‚ÆÅ’á’l‚ð•Û‘¶
 			Model->m_MinVertex.x = min(Model->m_MinVertex.x, position->x);
 			Model->m_MinVertex.y = min(Model->m_MinVertex.y, position->y);
 			Model->m_MinVertex.z = min(Model->m_MinVertex.z, position->z);
