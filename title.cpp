@@ -11,22 +11,27 @@
 #include "planePolygon.h"
 #include "camera.h"
 #include "Texture.h"
+#include "player.h"
+#include "map.h"
+#include "collision.h"
+#include "notes.h"
 
-Obj* pTitleBG;
-D3DXVECTOR3 cameraPos;
+
 //=============================================================================
 // ‰Šú‰»ˆ—
 //=============================================================================
 Title::Title()
 {
-	pTitleBG =new TitleBG();
+	pTitleBG = new TitleBG();
+	pPlayer = new Player();
+	pMap = new Map();
 	SetTexture(LoadTexture((char*)"data/TEXTURE/field000.jpg"));
 	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetSize(D3DXVECTOR3(100.0f, 100.0f, 100.0f));
-	SetScl(D3DXVECTOR3(2.0f, 1.0f, 2.0f));
+	SetScl(D3DXVECTOR3(4.0f, 1.0f, 1.0f));
 	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 
-
+	pPlayer->SetObstacles(pMap->GetObstacles());
 	//SetSound(LoadSound((char*)"data/SOUND/BGM/BGM_Title.wav"));
 	//SetVolume(GetSound(), 0.5f);//1.0‚ª100“
 	//PlaySound(GetSound(), 0);//Œã‚ë‚Ì”š‚Å‰ñ”‚ğŒˆ‚ß‚éA‚OˆÈ‰º‚É‚È‚é‚Æ–³ŒÀƒ‹[ƒv‚É‚È‚é
@@ -37,7 +42,11 @@ Title::Title()
 //=============================================================================
 Title::~Title()
 {
-	
+	delete pTitleBG;
+	delete pPlayer;
+	delete pMap;
+
+	UnloadModel(&model);
 }
 
 //=============================================================================
@@ -45,8 +54,16 @@ Title::~Title()
 //=============================================================================
 void Title::Update()
 {
-	SetPos(*GetCameraPos()-D3DXVECTOR3(0.0f,0.0f,-250.0f));
+
 	pTitleBG->Update();
+	pPlayer->Update();
+	pMap->Update();
+
+	pMap->SetPos(pPlayer->GetPos());
+	pMap->SetSize(pPlayer->GetSize());
+	pMap->SetScl(pPlayer->GetScl());
+
+
 	if (GetKeyboardTrigger(DIK_RETURN))
 	{
 		//StopSound(GetSound());
@@ -60,13 +77,17 @@ void Title::Update()
 void Title::Draw(void)
 {
 	pTitleBG->Draw();
-	// ƒ|ƒŠƒSƒ“‚Ì•`‰æˆ—
-	DrawPolygon();
+	pPlayer->Draw();
+	pMap->Draw();
 
-	//•`‰æˆ—
-	DrawPlanePolygon(GetTexture(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(),GetV(),GetUW(),GetVH());
 
-	//DrawPlanePolygon(GetTexture(), GetPos()+D3DXVECTOR3(0.0f, 500.0f,0.0f), GetSize(), GetRot(), GetScl(), GetMtxWorld());
+	////•`‰æˆ—
+	//DrawPlanePolygon(GetTexture(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(),GetV(),GetUW(),GetVH());
+
+	//DrawPlanePolygon(GetTexture(), GetPos()-D3DXVECTOR3(0.0f, 0.0f,100.0f),D3DXVECTOR3(400.0f, 0.0f, 100.0f), GetRot(), D3DXVECTOR3(1.0f,1.0f,1.0f), GetMtxWorld(), GetU(), GetV(), GetUW(), GetVH());
+
+	//UI
+	//DrawUIPlanePolygon(GetTexture(), GetPos() - D3DXVECTOR3(100.0f, 0.0f, 0.0f), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(), GetV(), GetUW(), GetVH());
 
 	//2Dƒ|ƒŠƒSƒ“‚Ì•`‰æ
 	//DrawPlanePolygon();

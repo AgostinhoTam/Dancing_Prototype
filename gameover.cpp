@@ -12,7 +12,7 @@
 //=============================================================================
 GameOver::GameOver()
 {
-	SetTexture(LoadTexture((char*)"data/TEXTURE/GameOver.png"));//テクスチャのセット
+	/*SetTexture(LoadTexture((char*)"data/TEXTURE/GameOver.png"));*///テクスチャのセット
 	//SetSound(LoadSound((char*)"data/SOUND/BGM/BGM_GameOver.wav"));
 	//SetVolume(GetSound(), 0.5f);//1.0が100％
 	//PlaySound(GetSound(), 0);//後ろの数字で回数を決める、０以下になると無限ループになる

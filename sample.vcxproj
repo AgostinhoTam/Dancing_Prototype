@@ -123,7 +123,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="collision.h" />
+    <ClInclude Include="judgment frame.h" />
+    <ClInclude Include="notes.h" />
     <ClInclude Include="obj.h" />
+    <ClInclude Include="obstacle.h" />
     <ClInclude Include="planePolygon.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="game.h" />
@@ -140,11 +144,16 @@
     <ClInclude Include="resultBG.h" />
     <ClInclude Include="score.h" />
     <ClInclude Include="sound.h" />
+    <ClInclude Include="sprite.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="titleBG.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="collision.cpp" />
+    <ClCompile Include="judgment frame.cpp" />
+    <ClCompile Include="notes.cpp" />
+    <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="planePolygon.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="game.cpp" />
@@ -161,6 +170,7 @@
     <ClCompile Include="resultBG.cpp" />
     <ClCompile Include="score.cpp" />
     <ClCompile Include="sound.cpp" />
+    <ClCompile Include="sprite.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="titleBG.cpp" />

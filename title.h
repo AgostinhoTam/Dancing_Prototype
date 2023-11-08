@@ -7,12 +7,22 @@
 
 #include "obj.h"
 #include "renderer.h"
+#include "titleBG.h"
+#include "player.h"
+#include "map.h"
+#include "obstacle.h"
+#include "notes.h"
 
-///==================================
+//==================================
 //ÉNÉâÉXêÈåæ
 //==================================
 class Title :public Obj
 {
+private:
+	Obj* pTitleBG;
+	Player* pPlayer;
+	Map* pMap;
+	Notes* pNotes;
 public:
 	Title();
 	~Title();
