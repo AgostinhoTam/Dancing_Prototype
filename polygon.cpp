@@ -8,8 +8,7 @@
 #include "polygon.h"
 #include "texture.h"
 #include "model.h"
-
-
+#include "obj.h"
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
@@ -67,7 +66,7 @@ void UpdatePolygon(void)
 //Scl		: スケール
 //MtxWorld	: ワールドマトリックス(ポリゴンのワールドマトリックス情報を入れる)、考えないで入れて大丈夫
 
-void DrawPolygon(DX11_MODEL Model,D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld)
+void DrawPolygon(DX11_MODEL* Model,D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3 Rot, D3DXVECTOR3 Scl, D3DXMATRIX MtxWorld)
 {
 
 	D3DXMATRIX mtxScl, mtxRot, mtxTranslate;
@@ -93,7 +92,7 @@ void DrawPolygon(DX11_MODEL Model,D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DXVECTOR3
 	SetWorldMatrix(&MtxWorld);
 
 	//objモデルの描画
-	DrawModel(&Model);
+	DrawModel(Model);
 }
 //=============================================================================
 // プレイヤーポリゴンデータ設定
@@ -117,8 +116,16 @@ void DrawPlayerPolygon(DX11_MODEL Model, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DX
 	// ワールドマトリックスの初期化（単位行列を作る関数）
 	D3DXMatrixIdentity(&MtxWorld);
 
+	
 	// スケールを反映
 	D3DXMatrixScaling(&mtxScl, Scl.x, Scl.y, Scl.z);
+
+	Model.m_MinVertex.x = Model.m_MinVertex.x * Scl.x;
+	Model.m_MinVertex.y = Model.m_MinVertex.y * Scl.y;
+	Model.m_MinVertex.z = Model.m_MinVertex.z * Scl.z;
+	Model.m_MaxVertex.x = Model.m_MaxVertex.x * Scl.x;
+	Model.m_MaxVertex.y = Model.m_MaxVertex.y * Scl.y;
+	Model.m_MaxVertex.z = Model.m_MaxVertex.z * Scl.z;
 
 	//第1引数 ＝          第2引数      ＊    第3引数
 	D3DXMatrixMultiply(&MtxWorld, &MtxWorld, &mtxScl);
@@ -133,6 +140,7 @@ void DrawPlayerPolygon(DX11_MODEL Model, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DX
 
 	// ワールドマトリックスの設定
 	SetWorldMatrix(&MtxWorld);
+
 
 	//objモデルの描画
 	DrawModel(&Model);

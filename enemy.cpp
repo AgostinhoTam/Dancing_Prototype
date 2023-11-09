@@ -7,39 +7,40 @@
 #include "polygon.h"
 #include "collision.h"
 #include "defenseobj.h"
+#include "collsionpoly.h"
 int frame = 0;
 
-
-Enemy::Enemy()
-{
-
+Enemy::Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap, DefenseObj& rdefobj, CAttackArea* attackarea,bool alive)  :
+	Obj(rmodel, rpos, rvel, rsize, rscale, rrot), m_map(&rmap), m_defenseobj(&rdefobj), m_attackarea(attackarea){
+	SetFlag(alive);
+	m_colpoly = new CollisionPoly(model.m_MaxVertex, model.m_MinVertex);
 }
-
 Enemy::~Enemy()
 {
-
+	delete m_colpoly;
+	UnloadModel(&model);
 }
 
 void Enemy::Update(void)
 {
 	MoveToDefense();
-	
-	CollisionCheck(m_map);
+	m_colpoly->UpdateColPoly(&model);
+	CollisionCheck(m_map,m_attackarea);
 }
 
 void Enemy::Draw(void)
 {
 	// ƒ|ƒŠƒSƒ“‚Ì•`‰æˆ—
-	
-		DrawPolygon(GetModel(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld());
-	
+	if (GetFlag()){
+		DrawPolygon(&model, GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld());
+	}
 
 	//DrawPolygon(model, D3DXVECTOR3(-100.0f, 0.0f, 0.0f), GetSize(), GetRot(), D3DXVECTOR3(10.0f, 10.0f, 10.0f), GetMtxWorld());
 
 }
 
 
-void Enemy::CollisionCheck(Map* rmap)
+void Enemy::CollisionCheck(Map* rmap, CAttackArea* attackarea)
 {
 	for (auto& obstacle : rmap->GetObstacles())
 	{
@@ -51,23 +52,9 @@ void Enemy::CollisionCheck(Map* rmap)
 		{
 			obstacle.SetFlag(false);
 		}
-
-		//“–‚½‚Á‚Ä‚¢‚éŽž
-		if (obstacle.GetFlag())
-		{
-			//this->SetPosY(this->GetPosY() + 500.0f);
-			//this->SetPosY(this->GetPosY());
-		}
-		//’n–Ê‚É‚Â‚¢‚Ä‚¢‚éŽž
-		else if (GetPosY() <= 0.0f)
-		{
-			//this->SetPosY(0.1f);
-		}
-		//“–‚½‚Á‚Ä‚¢‚È‚¢‚Æ‚«
-		else if (!obstacle.GetFlag())
-		{
-			//this->SetVelY(-10.0f);
-		}
+	}
+	if (m_colpoly->ColPolyBB(GetModel(), GetPos(), attackarea->GetModel(), attackarea->GetPos())) {
+ 		SetFlag(false);
 	}
 }
 
@@ -90,6 +77,8 @@ D3DXVECTOR3 Enemy::CalDirection(const D3DXVECTOR3& enemyvel, const D3DXVECTOR3& 
 	result.z = enemyvel.z * direction.z;
 	return result;
 }
+
+
 
 
 

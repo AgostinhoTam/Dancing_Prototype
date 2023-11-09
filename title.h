@@ -33,6 +33,7 @@ public:
 	Map& GetMap() { return *pMap; }
 	std::vector<Enemy*>& GetEnemy() { return Enemies; }
 	DefenseObj& GetDefObj() { return *pDefObj; }
+	
 };
 
 

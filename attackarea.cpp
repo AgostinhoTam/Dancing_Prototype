@@ -9,24 +9,27 @@
 
 CAttackArea::CAttackArea(){
 	LoadModel((char*)"data/MODEL/torus.obj", &model);
-	SetSize(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
-	SetScl(D3DXVECTOR3(0.0f, 1.0f, 0.0f));
+	SetSize(D3DXVECTOR3(10.0f, 10.0f, 10.0f));
+	SetScl(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	m_colpoly = new CollisionPoly(model.m_MaxVertex, model.m_MinVertex);
 }
 
 CAttackArea::~CAttackArea()
 {
+
 	UnloadModel(&model);
 }
 
 
 void CAttackArea::Update(void)
 {
-	DecreaseCurRng();
+ 	DecreaseCurRng();
 	if (GetKeyboardTrigger(DIK_SPACE)) {
  		IncreaseCurRng(SPD);
 	}
-	SetCurRng(m_CurRng);
+	UpdateCurRng();
+
 }
 
 void CAttackArea::UpdatePos(D3DXVECTOR3 pos)
@@ -37,7 +40,11 @@ void CAttackArea::UpdatePos(D3DXVECTOR3 pos)
 void CAttackArea::Draw(void)
 {
 	// É|ÉäÉSÉìÇÃï`âÊèàóù
-	DrawPlayerPolygon(model, GetPos(), GetSize(), GetRot(),GetScl(), GetMtxWorld());
+	DrawPolygon(&model, GetPos(), GetSize(), GetRot(),GetScl(), GetMtxWorld());
 	//DrawPolygon(model, D3DXVECTOR3(-100.0f, 0.0f, 0.0f), GetSize(), GetRot(), D3DXVECTOR3(10.0f, 10.0f, 10.0f), GetMtxWorld());
+}
 
+void CAttackArea::PolyUpdate(DX11_MODEL* model)
+{
+	
 }

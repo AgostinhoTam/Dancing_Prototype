@@ -14,4 +14,5 @@ public:
 	CollisionPoly(D3DXVECTOR3 max,D3DXVECTOR3 min);
 	~CollisionPoly(){}
 	bool ColPolyBB(DX11_MODEL object1, D3DXVECTOR3 pos1, DX11_MODEL object2, D3DXVECTOR3 pos2);
+	void UpdateColPoly(DX11_MODEL* model);
 };

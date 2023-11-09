@@ -13,17 +13,17 @@ Player::Player(Map* map, std::vector<Enemy*>& enemies, DefenseObj* defenseobj):
 	m_enemies(enemies),
 	m_defenseobj(defenseobj)
 {
-	m_attackarea = new CAttackArea();
 	LoadModel((char*)"data/MODEL/moxrigvamp02.obj", &model);
 	SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetSize(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
 	SetScl(D3DXVECTOR3(0.2f, 0.2f, 0.2f));
 	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-	m_colpoly = new CollisionPoly(model.m_MaxVertex,model.m_MinVertex);
+	m_attackarea = new CAttackArea();
+	m_colpoly = new CollisionPoly(model.m_MaxVertex, model.m_MinVertex);
 }
 
 Player::~Player()
-{
+{	
 	delete m_attackarea;
 	delete m_colpoly;
 	UnloadModel(&model);
@@ -62,7 +62,7 @@ void Player::Update(void)
 			SetVelY(-10.0f);
 		}
 	}
-	
+	m_colpoly->UpdateColPoly(&model);
 	if (m_colpoly->ColPolyBB(GetModel(), GetPos(),m_defenseobj->GetModel(),m_defenseobj->GetPos())) {
 		SetFlag(true);
 	}

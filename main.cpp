@@ -48,7 +48,7 @@ char	g_DebugStr[2048] = WINDOW_NAME;		// デバッグ文字表示用
 SCENE scene = SCENE_TITLE;
 
 //型
-Obj* obj;
+Title* obj;
 Obj* game;
 Obj* title;
 

@@ -22,20 +22,22 @@
 //ƒNƒ‰ƒXéŒ¾
 //==================================
 class CAttackArea;
+class Enemy;
 class Player :public Obj
 {
 private:
 	const float ATTACK_DMG = 1.0f;
 	Map* m_Map = nullptr;
 	std::vector<Enemy*> m_enemies;
-	CAttackArea* m_attackarea;
-	CollisionPoly* m_colpoly=nullptr;
 	DefenseObj* m_defenseobj = nullptr;
+	CAttackArea* m_attackarea;
+	CollisionPoly* m_colpoly;
 public:
 	Player(Map* map, std::vector<Enemy*>& enemies, DefenseObj* defenseobj);
 	~Player();
 	void Update(void)override;
 	void Draw(void)override;
+	CAttackArea* GetAttackArea() { return m_attackarea; }
 };
 #endif
 

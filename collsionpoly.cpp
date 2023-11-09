@@ -44,9 +44,23 @@ bool CollisionPoly::ColPolyBB(DX11_MODEL object1, D3DXVECTOR3 pos1, DX11_MODEL o
 	if (max1.z < min2.z || min1.z > max2.z) return false;
 
 	// YŽ²‚Ì”»’è
-	if (max1.y < min2.y || min1.y > max2.y) return false;
+ 	//if (max1.y < min2.y || min1.y > max2.y) return false;
 
-	return true;
+  	return true;
 
+}
+
+void CollisionPoly::UpdateColPoly(DX11_MODEL* model)
+{
+	D3DXVECTOR3 max = model->m_MaxVertex;
+	D3DXVECTOR3 min = model->m_MinVertex;
+	m_ColPolygon[0] = D3DXVECTOR3(min.x, min.y, min.z);
+	m_ColPolygon[1] = D3DXVECTOR3(max.x, min.y, min.z);
+	m_ColPolygon[2] = D3DXVECTOR3(max.x, min.y, max.z);
+	m_ColPolygon[3] = D3DXVECTOR3(min.x, min.y, max.z);
+	m_ColPolygon[4] = D3DXVECTOR3(min.x, max.y, min.z);
+	m_ColPolygon[5] = D3DXVECTOR3(max.x, max.y, min.z);
+	m_ColPolygon[6] = D3DXVECTOR3(max.x, max.y, max.z);
+	m_ColPolygon[7] = D3DXVECTOR3(min.x, max.y, max.z);
 }
 

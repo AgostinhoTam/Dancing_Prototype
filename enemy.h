@@ -10,6 +10,7 @@
 #include "obj.h"
 #include "map.h"
 #include "defenseobj.h"
+#include "attackarea.h"
 #include <vector>
 //==================================
 //マクロ定義
@@ -21,20 +22,21 @@
 ///==================================
 //クラス宣言
 //==================================
+class CAttackArea;
 class Enemy :public Obj
 {
 	const int ENEMY_MAX_NUM = 200;
 	const float NORMAL_ENEMY_SPEED = 2.0f;
 	Map* m_map= nullptr;
 	DefenseObj* m_defenseobj= nullptr;
+	CAttackArea* m_attackarea = nullptr;
+	CollisionPoly* m_colpoly;
 public:
-	Enemy();
-	Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap, DefenseObj& rdefobj) :
-		  Obj(rmodel,rpos,rvel,rsize,rscale,rrot),m_map(&rmap),m_defenseobj(&rdefobj){}
+	Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap, DefenseObj& rdefobj, CAttackArea* attackarea, bool alive);
 	~Enemy();
 	void Update(void)override;
 	void Draw(void)override;
-	void CollisionCheck(Map* rmap);
+	void CollisionCheck(Map* rmap, CAttackArea* attackarea);
 	void MoveToDefense();
 	D3DXVECTOR3 CalDirection(const D3DXVECTOR3& enemyvel, const D3DXVECTOR3& direction);
 };

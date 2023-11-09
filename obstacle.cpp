@@ -27,5 +27,5 @@ void Obstacle::Draw(void)
 
 void Obstacle::DrawMap(void)
 {
-	DrawPolygon(GetModel(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld());
+	DrawPolygon(&model, GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld());
 }

@@ -18,7 +18,6 @@
 #define	RATE_MOVE_MODEL		(0.20f)					// 移動慣性係数
 #define	VALUE_ROTATE_MODEL	(D3DX_PI * 0.05f)		// 回転速度
 #define	RATE_ROTATE_MODEL	(0.20f)					// 回転慣性係数
-#define	SCALE_MODEL			(10.0f)					// スケールの調整（CGモデリングソフトによるので自前で調整する）
 
 
 //*****************************************************************************
@@ -79,6 +78,10 @@ void LoadModel( char *FileName, DX11_MODEL *Model )
 
 	LoadObj( FileName, &model );
 
+	//obj対象のmodelにm_MaxVertexに入れる
+	Model->m_MaxVertex = model.m_MaxVertex;
+	Model->m_MinVertex = model.m_MinVertex;
+
 	// 頂点バッファ生成
 	{
 		D3D11_BUFFER_DESC bd;
@@ -137,9 +140,7 @@ void LoadModel( char *FileName, DX11_MODEL *Model )
 	delete[] model.IndexArray;
 	delete[] model.SubsetArray;
 
-	//obj対象のmodelにm_MaxVertexに入れる
-	Model->m_MaxVertex = model.m_MaxVertex;
-	Model->m_MinVertex = model.m_MinVertex;
+
 
 }
 

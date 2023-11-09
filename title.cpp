@@ -20,7 +20,7 @@ Title::Title()
 	pPlayer = new Player(pMap,Enemies,pDefObj);
 
 	unsigned int sound = LoadSound((char*)"data/SOUND/BGM/test.wav");
-	SetVolume(sound, 0.5f);//1.0が100％
+	SetVolume(sound, 0.2f);//1.0が100％
 	PlaySound(sound, 0);//後ろの数字で回数を決める、０以下になると無限ループになる
 }
 
@@ -39,7 +39,6 @@ Title::~Title()
 		}
 	}
 	Enemies.clear();
-	//delete pEnemy;
 	UnloadModel(&model);
 }
 
@@ -64,6 +63,8 @@ void Title::Update()
 		enemy->Update();
 		}
 	}
+
+
 	pMap->SetPos(pPlayer->GetPos());
 	pMap->SetSize(pPlayer->GetSize());
 	pMap->SetScl(pPlayer->GetScl());
@@ -73,6 +74,7 @@ void Title::Update()
 		//StopSound(GetSound());
 		SetScene(SCENE_GAME);
 	}
+
 }
 
 //=============================================================================
@@ -85,20 +87,10 @@ void Title::Draw(void)
 	pMap->Draw();
 	pDefObj->Draw();
 	for (auto* enemy : Enemies) {
+		if(enemy->GetFlag()){
 		enemy->Draw();
+		}
 	}
-	//pEnemy->Draw();
-
-	////描画処理
-	//DrawPlanePolygon(GetTexture(), GetPos(), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(),GetV(),GetUW(),GetVH());
-
-	//DrawPlanePolygon(GetTexture(), GetPos()-D3DXVECTOR3(0.0f, 0.0f,100.0f),D3DXVECTOR3(400.0f, 0.0f, 100.0f), GetRot(), D3DXVECTOR3(1.0f,1.0f,1.0f), GetMtxWorld(), GetU(), GetV(), GetUW(), GetVH());
-
-	//UI
-	//DrawUIPlanePolygon(GetTexture(), GetPos() - D3DXVECTOR3(100.0f, 0.0f, 0.0f), GetSize(), GetRot(), GetScl(), GetMtxWorld(), GetU(), GetV(), GetUW(), GetVH());
-
-	//2Dポリゴンの描画
-	//DrawPlanePolygon();
 }
 
 void Title::GenerateEnemy()
@@ -108,9 +100,9 @@ void Title::GenerateEnemy()
 	Enemies.push_back(new Enemy(enemytemp,
 		D3DXVECTOR3(400.0f, 200.0f, 0.0f),						//pos
 		D3DXVECTOR3(1.0f, 1.0f, 1.0f),						//vel
-		D3DXVECTOR3(1.0f, 1.0f, 1.0f),						//size
+		D3DXVECTOR3(10.0f, 10.0f, 10.0f),						//size
 		D3DXVECTOR3(0.0f, 0.0f, 0.0f),						//rot
-		D3DXVECTOR3(15.0f, 15.0f, 15.0f),GetMap(),GetDefObj()));					//scl
+		D3DXVECTOR3(10.0f, 10.0f, 10.0f),GetMap(),GetDefObj(),pPlayer->GetAttackArea(),true));					//scl
 }
 
 void Title::GenerateEnemy(float x,float z)
@@ -120,7 +112,7 @@ void Title::GenerateEnemy(float x,float z)
 	Enemies.push_back(new Enemy(enemytemp,
 		D3DXVECTOR3(x, 200.0f, z),						//pos
 		D3DXVECTOR3(1.0f, 1.0f, 1.0f),						//vel
-		D3DXVECTOR3(1.0f, 1.0f, 1.0f),						//size
+		D3DXVECTOR3(10.0f, 10.0f, 10.0f),						//size
 		D3DXVECTOR3(0.0f, 0.0f, 0.0f),						//rot
-		D3DXVECTOR3(15.0f, 15.0f, 15.0f), GetMap(), GetDefObj()));					//scl
+		D3DXVECTOR3(10.0f, 10.0f, 10.0f), GetMap(), GetDefObj(), pPlayer->GetAttackArea(),true));					//scl
 }
