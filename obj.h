@@ -39,7 +39,9 @@ private:
 	D3DXMATRIX	mtxWorld;							// ワールドマトリックス
 
 	D3DXVECTOR2 notespos = { 0.0f,0.0f };
+	D3DXVECTOR2 notespos1 = { 0.0f,0.0f };
 	float notessize = 10.0f;
+	D3DXVECTOR3  pos1 = { 0.0f,0.0f ,0.0f };
 
 	//-----------------------------------
 	//アニメーション用/画像
@@ -70,6 +72,12 @@ private:
 	int bgm = 0;		//BGM用
 	int se = 0;			//SE用
 
+	//-------------------------
+	//ノーツ用
+	//-------------------------
+	bool NJflag = false;
+	int njcnt = 0;
+
 protected:
 	DX11_MODEL model;				//3Dモデル格納用
 
@@ -87,6 +95,9 @@ public:
 	//-----------------------------------
 	void SetPos(D3DXVECTOR3 sPos) {
 		pos = sPos;
+	}//X,Y座標のセット
+	void SetPos1(D3DXVECTOR3 sPos1) {
+		pos1 = sPos1;
 	}//X,Y座標のセット
 	void SetOldPos(D3DXVECTOR3 sPos) {
 		oldpos = sPos;
@@ -167,6 +178,9 @@ public:
 	void SetNotesPos(D3DXVECTOR2 sNotesPos) {
 		notespos = sNotesPos;
 	}
+	void SetNotesPos1(D3DXVECTOR2 sNotesPos1) {
+		notespos1 = sNotesPos1;
+	}
 	//-----------------------------------
 	//アニメーション用/画像
 	//-----------------------------------
@@ -220,6 +234,15 @@ public:
 		flag = sFlag;
 	}//フラグ設定
 
+	//-------------------------
+	//ノーツ用
+	//------------------------
+	void SetNJFlag(bool sNJFlag) {
+		NJflag = sNJFlag;
+	}
+	void SetNJCnt(int sNJCnt) {
+		njcnt = sNJCnt;
+	}
 	//------------------------
 	//音関係
 	//------------------------
@@ -238,6 +261,9 @@ public:
 	//-----------------------------------
 	D3DXVECTOR3 GetPos() const {
 		return pos;
+	}//X,Y座標の取得
+	D3DXVECTOR3 GetPos1() const {
+		return pos1;
 	}//X,Y座標の取得
 	float GetPosX()const {
 		return pos.x;
@@ -319,6 +345,9 @@ public:
 	D3DXVECTOR2 GetNotesPos() const {
 		return notespos;
 	}
+	D3DXVECTOR2 GetNotesPos1() const {
+		return notespos1;
+	}
 	//-----------------------------------
 	//アニメーション用/画像
 	//-----------------------------------
@@ -381,4 +410,14 @@ public:
 	int GetSE() const {
 		return se;
 	}//SEの取得
+
+	//-------------------------
+	//ノーツ用
+	//------------------------
+	bool GetNJFlag() const {
+		return NJflag;
+	}
+	int GetNJCnt() const{
+		return njcnt;
+	}
 };

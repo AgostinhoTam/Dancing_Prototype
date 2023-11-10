@@ -9,6 +9,7 @@
 #include "renderer.h"
 #include "notes.h"
 #include "judgment frame.h"
+#include "notesjudge.h"
 ///==================================
 //ƒNƒ‰ƒXéŒ¾
 //==================================
@@ -17,6 +18,7 @@ class Game :public Obj
 private:
 	Notes* pNotes;
 	JudgmentFrame* pJF;
+	NotesJudge* NJ;
 public:
 	Game();
 	~Game();

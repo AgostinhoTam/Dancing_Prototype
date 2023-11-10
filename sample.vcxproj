@@ -126,6 +126,7 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="judgment frame.h" />
     <ClInclude Include="notes.h" />
+    <ClInclude Include="notesjudge.h" />
     <ClInclude Include="obj.h" />
     <ClInclude Include="obstacle.h" />
     <ClInclude Include="planePolygon.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="judgment frame.cpp" />
     <ClCompile Include="notes.cpp" />
+    <ClCompile Include="notesjudge.cpp" />
     <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="planePolygon.cpp" />
     <ClCompile Include="camera.cpp" />

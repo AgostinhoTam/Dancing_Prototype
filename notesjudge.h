@@ -9,7 +9,7 @@
 #include "obstacle.h"
 #include <vector>
 #include "judgment frame.h"
-#include "notesjudge.h"
+
 //*****************************************************************************
 // É}ÉNÉçíËã`
 //*****************************************************************************
@@ -18,15 +18,14 @@
 #define NOTES_SIZE	(10.0f)
 #define NOTES_VEL	(D3DXVECTOR3(1.0f,0.0f,0.0f))	// NOTES_VEL = JUDGME
 #define JUDGMENTNOTES_VEL (D3DXVECTOR2(1.0f,0.0f))
-class Notes : public Obj
+class NotesJudge : public Obj
 {
 private:
 	std::vector<Obstacle> obstacles;
 	JudgmentFrame* pJF;
-	NotesJudge* NJ;
 public:
-	Notes();
-	~Notes();
+	NotesJudge();
+	~NotesJudge();
 	void Update(void)override;
 	void Draw(void)override;
 
