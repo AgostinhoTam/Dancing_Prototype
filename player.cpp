@@ -62,10 +62,17 @@ void Player::Update(void)
 			SetVelY(-10.0f);
 		}
 	}
-	m_colpoly->UpdateColPoly(&model);
-	if (m_colpoly->ColPolyBB(GetModel(), GetPos(),m_defenseobj->GetModel(),m_defenseobj->GetPos())) {
-		SetFlag(true);
+	
+	//m_colpoly->UpdateColPoly(&model);
+
+	for (auto& enemy : m_enemies) {
+		
+		if (CollisionBB(m_attackarea->GetPos(), m_attackarea->GetSize(), m_attackarea->GetScl(), enemy->GetPos(), enemy->GetSize(), enemy->GetScl())) {
+			enemy->SetFlag(false);
+		
+		}
 	}
+
 	
 	//‘O
 	if (GetKeyboardPress(DIK_W))

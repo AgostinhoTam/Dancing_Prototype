@@ -8,6 +8,8 @@
 #include "map.h"
 #include "defenseobj.h"
 #include "enemy.h"
+#include "notes.h"
+#include "judgment frame.h"
 //==================================
 //ƒNƒ‰ƒXéŒ¾
 //==================================
@@ -20,6 +22,8 @@ private:
 	DefenseObj* pDefObj = nullptr;
 	std::vector<Enemy*> Enemies;
 	int m_frame = 0;
+	Notes* pNotes;
+	JudgmentFrame* pJF;
 public:
 	Title();
 	~Title();

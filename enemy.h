@@ -23,6 +23,7 @@
 //ÉNÉâÉXêÈåæ
 //==================================
 class CAttackArea;
+class Player;
 class Enemy :public Obj
 {
 	const int ENEMY_MAX_NUM = 200;
@@ -30,9 +31,12 @@ class Enemy :public Obj
 	Map* m_map= nullptr;
 	DefenseObj* m_defenseobj= nullptr;
 	CAttackArea* m_attackarea = nullptr;
-	CollisionPoly* m_colpoly;
+	CollisionPoly* m_colpoly=nullptr;
+	Player* m_player = nullptr;
 public:
-	Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap, DefenseObj& rdefobj, CAttackArea* attackarea, bool alive);
+	Enemy(){}
+	Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap, DefenseObj& rdefobj, CAttackArea* attackarea,Player* player, bool alive);
+	Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap, DefenseObj& rdefobj, bool alive);
 	~Enemy();
 	void Update(void)override;
 	void Draw(void)override;

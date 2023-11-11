@@ -8,7 +8,7 @@
 DefenseObj::DefenseObj()
 {
 	LoadModel((char*)"data/MODEL/dancing_color_03.obj", &model);
-	SetPos(D3DXVECTOR3(-2300.0f, -500.0f, 0.0f));
+	SetPos(D3DXVECTOR3(2500.0f, -500.0f, 0.0f));
 	SetSize(D3DXVECTOR3(10.0f, 10.0f, 10.0f));
 	SetScl(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
 	SetRot(D3DXVECTOR3(0.0f, 0.0f, 0.0f));

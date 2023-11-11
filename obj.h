@@ -38,7 +38,10 @@ private:
 	D3DXVECTOR3  scl = { 0.0f,0.0f,0.0f };			//スケール
 	D3DXMATRIX	mtxWorld;							// ワールドマトリックス
 
-
+	D3DXVECTOR3 notespos = { 0.0f,0.0f,0.0f };
+	float notessize = 10.0f;
+	bool NJflag = false;
+	int njcnt = 0;
 	//-----------------------------------
 	//アニメーション用/画像
 	//-----------------------------------
@@ -81,6 +84,19 @@ public:
 	//--------------------------------------------
 	//セッター
 	//--------------------------------------------
+	// 
+	void SetNJFlag(bool sNJFlag) {
+		NJflag = sNJFlag;
+	}
+	void SetNJCnt(int sNJCnt) {
+		njcnt = sNJCnt;
+	}
+	bool GetNJFlag() const {
+		return NJflag;
+	}
+	int GetNJCnt() const {
+		return njcnt;
+	}
 	//-----------------------------------
 	//座標処理/2D
 	//-----------------------------------
@@ -162,7 +178,9 @@ public:
 	void SetMtxWorld(D3DXMATRIX mtx) {
 		mtxWorld = mtx;
 	}//ワールドマトリックスの設定
-
+	void SetNotesPos(D3DXVECTOR3 sNotesPos) {
+		notespos = sNotesPos;
+	}
 	//-----------------------------------
 	//アニメーション用/画像
 	//-----------------------------------
@@ -311,6 +329,10 @@ public:
 		return mtxWorld;
 	}//ワールドマトリックスの取得
 	
+
+	D3DXVECTOR3 GetNotesPos() const {
+		return notespos;
+	}
 	//-----------------------------------
 	//アニメーション用/画像
 	//-----------------------------------

@@ -23,7 +23,7 @@ private:
 	std::vector<Obstacle> obstacles;
 	//std::vector<Obstacle> mapobstacles;
 	/*Obstacle* pObstacle[OBSTACLE_MAX];*/
-
+	Obstacle* pObstacle[OBSTACLE_MAX];
 public:
 	Map();
 	~Map();
@@ -35,6 +35,9 @@ public:
 		return obstacles;
 	}
 
+	Obstacle* GetObstacle(int cnt)const {
+		return pObstacle[cnt];
+	}
 
 };
 #endif // !_MAP_H

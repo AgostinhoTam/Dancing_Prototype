@@ -145,4 +145,3 @@ void DrawPlayerPolygon(DX11_MODEL Model, D3DXVECTOR3 Pos, D3DXVECTOR3 Size, D3DX
 	//objƒ‚ƒfƒ‹‚Ì•`‰æ
 	DrawModel(&Model);
 }
-

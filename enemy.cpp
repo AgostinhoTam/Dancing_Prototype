@@ -10,10 +10,14 @@
 #include "collsionpoly.h"
 int frame = 0;
 
-Enemy::Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap, DefenseObj& rdefobj, CAttackArea* attackarea,bool alive)  :
-	Obj(rmodel, rpos, rvel, rsize, rscale, rrot), m_map(&rmap), m_defenseobj(&rdefobj), m_attackarea(attackarea){
+Enemy::Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap, DefenseObj& rdefobj, CAttackArea* attackarea,Player* player, bool alive)  :
+	Obj(rmodel, rpos, rvel, rsize, rscale, rrot), m_map(&rmap), m_defenseobj(&rdefobj), m_attackarea(attackarea), m_player(player) {
 	SetFlag(alive);
 	m_colpoly = new CollisionPoly(model.m_MaxVertex, model.m_MinVertex);
+}
+Enemy::Enemy(DX11_MODEL rmodel, D3DXVECTOR3 rpos, D3DXVECTOR3 rvel, D3DXVECTOR3 rsize, D3DXVECTOR3 rrot, D3DXVECTOR3 rscale, Map& rmap, DefenseObj& rdefobj, bool alive):Obj(rmodel, rpos, rvel, rsize, rscale, rrot), m_map(&rmap)
+{
+	SetFlag(alive);
 }
 Enemy::~Enemy()
 {
@@ -23,9 +27,11 @@ Enemy::~Enemy()
 
 void Enemy::Update(void)
 {
+	if (m_attackarea != nullptr && m_defenseobj != nullptr && m_player != nullptr){
 	MoveToDefense();
 	m_colpoly->UpdateColPoly(&model);
-	CollisionCheck(m_map,m_attackarea);
+	CollisionCheck (m_map,m_attackarea);
+	}
 }
 
 void Enemy::Draw(void)
@@ -53,7 +59,7 @@ void Enemy::CollisionCheck(Map* rmap, CAttackArea* attackarea)
 			obstacle.SetFlag(false);
 		}
 	}
-	if (m_colpoly->ColPolyBB(GetModel(), GetPos(), attackarea->GetModel(), attackarea->GetPos())) {
+	if (CollisionBB(GetPos(), GetSize(), GetScl(), attackarea->GetPos(), attackarea->GetSize(), attackarea->GetScl())) {
  		SetFlag(false);
 	}
 }
@@ -62,7 +68,7 @@ void Enemy::MoveToDefense()
 {
 	if(m_defenseobj != nullptr){
 	D3DXVECTOR3 Nowpos = this->GetPos();
-		D3DXVECTOR3 direction = (m_defenseobj->GetPos()) - Nowpos;
+		D3DXVECTOR3 direction = (m_player->GetPos()) - Nowpos;
 		D3DXVec3Normalize(&direction, &direction);
 		SetVel(direction * NORMAL_ENEMY_SPEED);
 		SetPos(GetPos() + GetVel());

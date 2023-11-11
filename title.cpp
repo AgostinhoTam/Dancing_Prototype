@@ -17,10 +17,19 @@ Title::Title()
 	pTitleBG =new TitleBG();
 	pMap = new Map();
 	pDefObj = new DefenseObj();
+	DX11_MODEL enemytemp;
+	LoadModel((char*)"data/MODEL/miku_01.obj", &enemytemp);
+	Enemies.push_back(new Enemy(enemytemp,
+		D3DXVECTOR3(2000.0f, 2000.0f, 0.0f),						//pos
+		D3DXVECTOR3(1.0f, 1.0f, 1.0f),						//vel
+		D3DXVECTOR3(10.0f, 10.0f, 10.0f),						//size
+		D3DXVECTOR3(0.0f, 0.0f, 0.0f),						//rot
+		D3DXVECTOR3(10.0f, 10.0f, 10.0f), GetMap(),GetDefObj(),true));
 	pPlayer = new Player(pMap,Enemies,pDefObj);
-
+	pNotes = new Notes();
+	//pJF = new JudgmentFrame();
 	unsigned int sound = LoadSound((char*)"data/SOUND/BGM/test.wav");
-	SetVolume(sound, 0.2f);//1.0が100％
+	SetVolume(sound, 0.1f);//1.0が100％
 	PlaySound(sound, 0);//後ろの数字で回数を決める、０以下になると無限ループになる
 }
 
@@ -33,6 +42,8 @@ Title::~Title()
 	delete pPlayer;
 	delete pMap;
 	delete pDefObj;
+	delete pNotes;
+	//delete pJF;
 	for(auto* enemy:Enemies){
 		if(enemy != nullptr){
 		delete enemy;
@@ -52,6 +63,8 @@ void Title::Update()
 	pMap->Update();
 	pDefObj->Update();
 	pPlayer->Update();
+	pNotes->Update();
+	//pJF->Update();
 	if (GetFrame() == 60 && Enemies.capacity() < 200) {
 		float randomx = rand() % 2000 -1000;
 		float randomz = rand() % 2000 - 1000;
@@ -86,11 +99,14 @@ void Title::Draw(void)
     pPlayer->Draw();
 	pMap->Draw();
 	pDefObj->Draw();
+	pNotes->Draw();
+	//pJF->Draw();
 	for (auto* enemy : Enemies) {
 		if(enemy->GetFlag()){
 		enemy->Draw();
 		}
 	}
+
 }
 
 void Title::GenerateEnemy()
@@ -102,7 +118,7 @@ void Title::GenerateEnemy()
 		D3DXVECTOR3(1.0f, 1.0f, 1.0f),						//vel
 		D3DXVECTOR3(10.0f, 10.0f, 10.0f),						//size
 		D3DXVECTOR3(0.0f, 0.0f, 0.0f),						//rot
-		D3DXVECTOR3(10.0f, 10.0f, 10.0f),GetMap(),GetDefObj(),pPlayer->GetAttackArea(),true));					//scl
+		D3DXVECTOR3(10.0f, 10.0f, 10.0f),GetMap(),GetDefObj(),pPlayer->GetAttackArea(),pPlayer->GetPlayer(),true));					//scl
 }
 
 void Title::GenerateEnemy(float x,float z)
@@ -114,5 +130,5 @@ void Title::GenerateEnemy(float x,float z)
 		D3DXVECTOR3(1.0f, 1.0f, 1.0f),						//vel
 		D3DXVECTOR3(10.0f, 10.0f, 10.0f),						//size
 		D3DXVECTOR3(0.0f, 0.0f, 0.0f),						//rot
-		D3DXVECTOR3(10.0f, 10.0f, 10.0f), GetMap(), GetDefObj(), pPlayer->GetAttackArea(),true));					//scl
+		D3DXVECTOR3(10.0f, 10.0f, 10.0f), GetMap(), GetDefObj(), pPlayer->GetAttackArea(),pPlayer->GetPlayer(),true));					//scl
 }

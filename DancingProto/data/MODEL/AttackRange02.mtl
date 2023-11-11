@@ -1,0 +1,5 @@
+﻿newmtl M_AttackRange02
+	map_Kd M_AttackRange02_D.bmp
+	map_Ks M_AttackRange02_S.bmp
+	bump M_AttackRange02_N.bmp
+

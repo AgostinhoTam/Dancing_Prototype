@@ -37,12 +37,91 @@ bool CollisionBB(D3DXVECTOR3 pos1, D3DXVECTOR3 size1, D3DXVECTOR3 scl1, D3DXVECT
 		if (min1.z < max2.z && max1.z > min2.z)
 		{
 			//Y軸の判定
-			if (min1.y < max2.y && max1.y > min2.y)
+ 			if (min1.y < max2.y && max1.y > min2.y)
 			{
 				//全ての条件がTRUEならヒット判定
-				return true;
+ 				return true;
 			}
 		}
 	}
 	return false;
+}
+
+//=============================================================================
+
+//当たり判定処理 [collision.cpp]
+//Date:2023/10/30	Auther:林祐也
+
+//=============================================================================
+#include "collision.h"
+
+
+
+bool CollisionPerfectBC(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2)
+{
+	//pos1��pos2���Ȃ��x�N�g�������
+	D3DXVECTOR3 vDistance = pos1 - pos2;
+
+	//vDistance�̃x�N�g�����𓾂�
+	float length;
+	length = D3DXVec3Length(&vDistance);
+	
+
+	if (length >=0 && length<=10)
+	{
+ 		return true;
+	}
+
+
+
+	return false;
+}
+bool CollisionGreatBC(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2)
+{
+	//pos1��pos2���Ȃ��x�N�g�������
+	D3DXVECTOR3 vDistance = pos1 - pos2;
+
+	//vDistance�̃x�N�g�����𓾂�
+	float length;
+	length = D3DXVec3Length(&vDistance);
+
+	if (length>10 && length<=20)
+	{
+		return true;
+	}
+
+	return false;
+}
+bool CollisionGoodBC(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2)
+{
+	//pos1��pos2���Ȃ��x�N�g�������
+	D3DXVECTOR3 vDistance = pos1 - pos2;
+
+	//vDistance�̃x�N�g�����𓾂�
+	float length;
+	length = D3DXVec3Length(&vDistance);
+
+	if (length>=20&& length <30)
+	{
+		return true;
+	}
+
+	return false;
+}
+bool CollisionMissBC(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2)
+{
+	//pos1��pos2���Ȃ��x�N�g�������
+	D3DXVECTOR3 vDistance = pos1 - pos2;
+
+	//vDistance�̃x�N�g�����𓾂�
+	float length;
+	length = D3DXVec3Length(&vDistance);
+
+	if (length>=30)
+	{
+		return true;
+	}
+
+	return false;
+
 }

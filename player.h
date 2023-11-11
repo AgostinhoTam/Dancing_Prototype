@@ -38,6 +38,7 @@ public:
 	void Update(void)override;
 	void Draw(void)override;
 	CAttackArea* GetAttackArea() { return m_attackarea; }
+	Player* GetPlayer() { return this; }
 };
 #endif
 
